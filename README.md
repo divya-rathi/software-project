@@ -1,6 +1,6 @@
 # soft_project
 
-> a boring project
+> Software Project
 
 ## Build Setup
 
