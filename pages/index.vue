@@ -6,7 +6,7 @@
         soft_project
       </h1>
       <h2 class="subtitle">
-        a boring project
+        An !interesting project
       </h2>
       <div class="links">
         <a
