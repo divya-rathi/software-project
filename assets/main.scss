@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald|Playfair+Display|Source+Sans+Pro&display=swap");
 
-
 // Colors
 $purple: #9454a0;
 $blue: #dcf2f9;
@@ -27,4 +26,13 @@ $family-secondary: "Playfair Display";
 
 :root {
     scroll-behavior: smooth;
+}
+
+
+// Page transition animation
+.page-enter-active, .page-leave-active {
+    transition: opacity .4s ease-in-out;
+}
+.page-enter, .page-leave-to {
+    opacity: 0;
 }
