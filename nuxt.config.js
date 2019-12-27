@@ -22,7 +22,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
+  css: ['./assets/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -38,8 +38,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
@@ -53,13 +51,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
-    },
     /*
     ** You can extend webpack config here
     */

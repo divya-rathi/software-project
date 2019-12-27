@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald|Playfair+Display|Source+Sans+Pro&display=swap");
+
+
+// Colors
+$purple: #9454a0;
+$blue: #dcf2f9;
+$red: #ffb8ba;
+$yellow: #fee9b4;
+$green: #a1f7be;
+$cyan: #c7d8eb;
+$orange: #fee9b4;
+$background: #f9ecec;
+// Derived variables
+$purple--dark: #570066;
+$primary: $purple--dark;
+
+
+@import "~bulma/sass/utilities/_all";
+
+// Typefaces
+$family-sans-serif: "Oswald";
+$family-primary: "Source Sans Pro";
+$family-secondary: "Playfair Display";
+
+
+@import "~bulma";
+
+:root {
+    scroll-behavior: smooth;
+}

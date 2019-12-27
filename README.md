@@ -1,6 +1,6 @@
-# soft_project
+# project
 
-> Software Project
+> My tiptop Nuxt.js project
 
 ## Build Setup
 
