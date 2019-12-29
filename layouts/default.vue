@@ -1,8 +1,19 @@
 <template>
-  <div>
+<div>
+    <Nav />
     <nuxt />
-  </div>
+</div>
 </template>
 
 <style>
+
 </style>
+
+<script>
+import Nav from '~/components/Nav';
+export default {
+    components: {
+        Nav,
+    },
+}
+</script>
