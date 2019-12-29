@@ -1,19 +1,24 @@
 <template>
 <div>
-    <Nav />
+    <a>
+        <nuxt-link to="/course">course</nuxt-link>
+    </a>
+    <a class="is-pulled-right">
+        <nuxt-link to="/login">Login</nuxt-link>
+    </a>
     <nuxt />
 </div>
 </template>
 
 <style>
-
+a
+{
+    color: red;
+}
 </style>
 
 <script>
-import Nav from '~/components/Nav';
 export default {
-    components: {
-        Nav,
-    },
+    components: {}
 }
 </script>
