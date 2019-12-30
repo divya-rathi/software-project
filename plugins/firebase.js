@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
     measurementId: "G-KYDMDCL5CH"
   };
 
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 }
 
 const fireDb = firebase.firestore();
