@@ -1,7 +1,7 @@
 <template>
 <section class="section">
     <particles-bg num=50 type="cobweb" :bg="true" />
-    <div class="container">
+    <div class="card">
         <h1 class="title is-size-1 has-text-centered is-family-secondary">Login</h1>
 
         <form action="" method="post" @submit.prevent="login">
@@ -27,7 +27,17 @@
 </template>
 
 <style lang="scss" scoped>
-.container {
+h1 {
+    padding-top: calc(1rem + 1vh);
+    padding-bottom: calc(1rem + 1vh);
+
+}
+
+.control {
+    padding-bottom: calc(1rem + 1vh);
+}
+
+.card {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -38,8 +48,11 @@
     color: #ff7315;
 }
 
-.container {
+.card {
     width: 70vw;
+    padding-left: calc(3rem + 2vw);
+    padding-right: calc(3rem + 2vw);
+
 }
 </style>
 
