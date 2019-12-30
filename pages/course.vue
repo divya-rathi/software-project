@@ -9,9 +9,13 @@
                         <div class="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae reiciendis praesentium alias excepturi mollitia libero quas dicta repudiandae a nemo numquam nobis neque nostrum laborum, laudantium sint vel molestiae sed!</div>
                         <div class="has-text-centered">Rating comes here</div>
                     </div>
-                    <div class="column is-three-quarters">
-                        <div class="content">
-                            <p class="subtitle is-size-3 is-family-monospace has-text-centered">{{courseDescription.toString().replace("[", "").replace("]", "")}}</p>
+                    <div class="column is-three-quarters description">
+                        <div v-for="(val,index) in courseDescriptionkey" :key="index" class="content">
+                            <!-- <p class="subtitle is-size-3 is-family-monospace has-text-centered">{{courseDescription.toString().replace("[", "").replace("]", "")}}</p> -->
+                            <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}</p>
+                            <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{courseDescriptionvalue[index]}}</p>
+                            <hr>
+
                         </div>
                         <div>
                             <div class="control has-text-centered bottom1">
@@ -107,6 +111,12 @@
 </template>
 
 <style lang="scss" scoped>
+.description {
+    padding-left: calc(1rem + 1vw);
+    padding-right: calc(1rem + 1vw);
+
+}
+
 .panel-block {
     padding-top: calc(1rem + 2vh);
     padding-bottom: calc(1rem + 2vh);
@@ -134,7 +144,8 @@ export default {
             visible2: false,
             courseName: "",
             courseCode: "",
-            courseDescription: "",
+            courseDescriptionkey: "",
+            courseDescriptionvalue: "",
         };
     },
     async asyncData({
@@ -153,8 +164,10 @@ export default {
             courseCode: snap.data().courseCode,
             courseName: snap.data().courseName,
             // courseDescription: snap.data().courseDescription.units
-            courseDescription : Object.entries(snap.data().courseDescription.units)
-                .map(([key, value]) => key + value)
+            courseDescriptionkey: Object.entries(snap.data().courseDescription.units)
+                .map(([key, value]) => key),
+            courseDescriptionvalue: Object.entries(snap.data().courseDescription.units)
+                .map(([key, value]) => value)
             // courseDescription : temp
         };
     }
