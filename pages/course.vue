@@ -11,12 +11,28 @@
                     </div>
                     <div class="column is-three-quarters description">
                         <div v-for="(val,index) in courseDescriptionkey" :key="index" class="content">
-                            <!-- <p class="subtitle is-size-3 is-family-monospace has-text-centered">{{courseDescription.toString().replace("[", "").replace("]", "")}}</p> -->
-                            <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}</p>
-                            <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{courseDescriptionvalue[index]}}</p>
+                            <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}: {{courseDescriptionvalue[index]}}</p>
                             <hr>
-
                         </div>
+
+                        <div v-if="textbook != undefined">
+                            <h2 class="is-size-3 has-text-centered is-family-sans-serif">Text Books</h2>
+                            <br>
+                            <div v-for="(val,index) in textbookskey" :key="index" class="content">
+                                <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}: {{textbooksvalue[index]}}</p>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div v-if="references != undefined">
+                            <h2 class="is-size-3 has-text-centered is-family-sans-serif">References</h2>
+                            <br>
+                            <div v-for="(val,index) in referenceskey" :key="index" class="content">
+                                <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}: {{referencesvalue[index]}}</p>
+                                <hr>
+                            </div>
+                        </div>
+
                         <div>
                             <div class="control has-text-centered bottom1">
                                 <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
@@ -142,10 +158,19 @@ export default {
             visible: false,
             visible1: false,
             visible2: false,
+            code: "15CSE102",
             courseName: "",
             courseCode: "",
             courseDescriptionkey: "",
             courseDescriptionvalue: "",
+
+            textbook: "",
+            textbookskey: "",
+            textbooksvalue: "",
+
+            references: "",
+            referenceskey: "",
+            referencesvalue: ""
         };
     },
     async asyncData({
@@ -153,23 +178,46 @@ export default {
         params,
         error
     }) {
-        const ref = fireDb.collection("Course").doc("15CSE100");
-        let snap;
+        const ref = fireDb.collection("Course").doc("15CSE111");
+        var snap;
+        var reference, referenceskeys, referencesvalues;
+        var tb, tbkey, tbval;
+
         try {
             snap = await ref.get();
+            reference = snap.data().courseDescription.references;
+            tb = snap.data().courseDescription.textbooks;
+            if (reference != undefined) {
+                referenceskeys = Object.entries(snap.data().courseDescription.references)
+                    .map(([key, value]) => key);
+                referencesvalues = Object.entries(snap.data().courseDescription.references)
+                    .map(([key, value]) => value);
+            }
+
+            if (tb != undefined) {
+                tbkey = Object.entries(snap.data().courseDescription.textbooks)
+                    .map(([key, value]) => key);
+                tbval = Object.entries(snap.data().courseDescription.textbooks)
+                    .map(([key, value]) => value);
+            }
+
         } catch (e) {
             console.error(e);
         }
         return {
             courseCode: snap.data().courseCode,
             courseName: snap.data().courseName,
-            // courseDescription: snap.data().courseDescription.units
             courseDescriptionkey: Object.entries(snap.data().courseDescription.units)
                 .map(([key, value]) => key),
             courseDescriptionvalue: Object.entries(snap.data().courseDescription.units)
-                .map(([key, value]) => value)
-            // courseDescription : temp
-        };
+                .map(([key, value]) => value),
+            textbookskey: tbkey,
+            textbooksvalue: tbval,
+            references: reference,
+            referenceskey: referenceskeys,
+            referencesvalue: referencesvalues,
+        }
     }
+
 };
 </script>
