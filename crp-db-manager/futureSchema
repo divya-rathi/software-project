@@ -1,0 +1,84 @@
+enum UserType {
+	STUDENT
+	FACULTY
+	MENTOR
+}
+
+type Image {
+	imageName: String!
+	imageEncoding: String!
+}
+
+type User {
+	regNumber: ID!
+	username: String!
+	password: String!
+	email: String!
+	phoneNumber: String!
+	userType: UserType!
+}
+
+type Staff {
+	regNumber: ID!
+	questions: [Question]!
+	previousCourses: [Course]!
+	currentCourses: [Course]!
+}
+
+type Student {
+	rollNumber: ID!
+	reviews: [Review]!
+	questions: [Question]!
+	coursesCompleted: [Course]!
+	coursesRemaining: [Course]!
+}
+
+type Course {
+	courseCode: ID!
+	courseName: String!
+	courseDescription: String
+	reviews: [Review]!
+	questions: [Question]!
+}
+
+type Review {
+	reviewId: ID!
+	courseCode: ID!
+	rollNumber: ID!
+	rating: Rating!
+	courseText: String
+	comments: [Comment]!
+}
+
+type Question {
+	questionId: ID!
+	courseId: ID!
+	rollNumber: ID!
+	FacultyId: ID
+	question: String!
+	Answer: String
+}
+
+type Comment {
+	commentId: ID! 
+	rollNumber: ID!
+	courseCode: ID!
+	commentText: String!
+}
+
+type userDetails {
+	userDetails: User!
+	userTypeDetails: Student! | Staff!
+}
+
+type Query {
+	userDetails(regNumber: ID!): User!
+	courseDetails(courseCode: ID!): Course!
+	getReview(courseCode: ID!, regNumber: ID!): Review!
+	getComment(commentId: ID!): Comment!
+	getCourseQuestions(courseCode: ID!): [Question]!
+	getUserReview(rollNumber: ID!): Review
+	getCourseReviews(courseCode: ID!): [Review]!
+	getReviewComments(reviewId: ID!): [Comment]!
+
+}
