@@ -6,13 +6,16 @@
     <a class="is-pulled-right">
         <nuxt-link to="/login">Login</nuxt-link>
     </a>
+    &nbsp; &nbsp;
+    <a class="">
+        <nuxt-link to="/account">Account</nuxt-link>
+    </a>
     <nuxt />
 </div>
 </template>
 
 <style>
-a
-{
+a {
     color: red;
 }
 </style>
