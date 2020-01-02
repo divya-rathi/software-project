@@ -11,22 +11,22 @@
                         <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
                     </figure>
                 </div>
-                <div class="media-content is-size-4 is-family-monospace inpad">
+                <div class="media-content is-size-4 is-family-monospace inpad totext">
                     <div class="media inpad">
                         <div class="media-left">💂 Roll Number:</div>
-                        <div class="media-content">Roll Number here</div>
+                        <div class="media-content">Cb.en.u4cse17415</div>
                     </div>
                     <div class="media inpad">
                         <div class="media-left">☎️ Phone:</div>
-                        <div class="media-content">Phone number here</div>
+                        <div class="media-content">9440810808</div>
                     </div>
                     <div class="media inpad">
                         <div class="media-left"> 📧 Email:</div>
-                        <div class="media-content">Mail here</div>
+                        <div class="media-content">killimanjaro@yahooooo.com</div>
                     </div>
                     <div class="media inpad">
                         <div class="media-left"> 🎯 Courses:</div>
-                        <div class="media-content">Attended courses here</div>
+                        <div class="media-content">MBA, CSE, EEE, COA</div>
                     </div>
                     <div class="media inpad">
                         Some buttons here if necessary!
@@ -39,6 +39,12 @@
 </template>
 
 <style lang="scss" scoped>
+
+.totext
+{
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
 
 .title
 {
