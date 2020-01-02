@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div v-if="references != undefined">
+                        <div v-if="references != '[object Object]'">
                             <h2 class="is-size-3 has-text-centered is-family-sans-serif">References</h2>
                             <br>
                             <div v-for="(val,index) in referenceskey" :key="index" class="content">
@@ -35,8 +35,8 @@
 
                         <div>
                             <div class="control has-text-centered bottom1">
-                                <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
-                                <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Review</button>
+                                <button type="submit" class="button  is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
+                                <button type="submit" class="button  is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Review</button>
                             </div>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
             </a>
         </div>
-        <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible1 = !visible1, visible2=!visible2">Review</button>
-        <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Go Home</button>
+        <button type="submit" class="button  is-dark is-medium is-family-monospace" @click="visible1 = !visible1, visible2=!visible2">Review</button>
+        <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Go Home</button>
     </div>
 
     <!-- ----------------------------------------------------------------------------------------------- -->
@@ -120,13 +120,19 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
             </a>
         </div>
-        <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
-        <button type="submit" class="button is-rounded is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
+        <button type="submit" class="button  is-dark is-medium is-family-monospace but1" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
+        <button type="submit" class="button  is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
     </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
+.button
+{
+    min-width: 10vw;
+    margin-right: calc(0.5rem + 1vw);
+}
+
 .description {
     padding-left: calc(1rem + 1vw);
     padding-right: calc(1rem + 1vw);
