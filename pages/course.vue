@@ -115,7 +115,7 @@
             </a>
             <a class="panel-block">
                 <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <i class="fas fa-book " aria-hidden="true"></i>
                 </span>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
             </a>
