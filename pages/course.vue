@@ -184,7 +184,7 @@ export default {
         params,
         error
     }) {
-        const ref = fireDb.collection("Course").doc("15CSE111");
+        const ref = fireDb.collection("Course").doc("15CSE102");
         var snap;
         var reference, referenceskeys, referencesvalues;
         var tb, tbkey, tbval;
@@ -193,7 +193,7 @@ export default {
             snap = await ref.get();
             reference = snap.data().courseDescription.references;
             tb = snap.data().courseDescription.textbooks;
-            if (reference != undefined) {
+            if (reference != '[object Object]') {
                 referenceskeys = Object.entries(snap.data().courseDescription.references)
                     .map(([key, value]) => key);
                 referencesvalues = Object.entries(snap.data().courseDescription.references)
