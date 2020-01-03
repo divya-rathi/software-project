@@ -32,7 +32,7 @@
                 </div>
               </div>
 
-              <div v-if="references != undefined">
+              <div v-if="references != '[object Object]'">
                 <h2 class="is-size-3 has-text-centered is-family-sans-serif">References</h2>
                 <br />
                 <div v-for="(val,index) in referenceskey" :key="index" class="content">
@@ -47,12 +47,12 @@
                 <div class="control has-text-centered bottom1">
                   <button
                     type="submit"
-                    class="button is-rounded is-dark is-medium is-family-monospace"
+                    class="button is-dark is-medium is-family-monospace"
                     @click="visible = !visible, visible1=!visible1"
                   >Q&A</button>
                   <button
                     type="submit"
-                    class="button is-rounded is-dark is-medium is-family-monospace"
+                    class="button is-dark is-medium is-family-monospace"
                     @click="visible = !visible, visible2=!visible2"
                   >Review</button>
                 </div>
@@ -100,12 +100,12 @@
       </div>
       <button
         type="submit"
-        class="button is-rounded is-dark is-medium is-family-monospace"
+        class="button is-dark is-medium is-family-monospace"
         @click="visible1 = !visible1, visible2=!visible2"
       >Review</button>
       <button
         type="submit"
-        class="button is-rounded is-dark is-medium is-family-monospace"
+        class="button is-dark is-medium is-family-monospace"
         @click="visible = !visible, visible1=!visible1"
       >Go Home</button>
     </div>
@@ -139,21 +139,22 @@
           </span>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti doloremque quisquam obcaecati voluptatibus dolorum laboriosam eveniet quaerat maiores similique. Nihil fuga animi esse velit vel corporis atque nisi quasi. Voluptatibus.
         </a>
+
         <a class="panel-block">
           <span class="panel-icon">
             <i class="fas fa-book" aria-hidden="true"></i>
           </span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi i llo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
         </a>
       </div>
       <button
         type="submit"
-        class="button is-rounded is-dark is-medium is-family-monospace"
+        class="button is-dark is-medium is-family-monospace but1"
         @click="visible2 = !visible2, visible1=!visible1"
       >Q&A</button>
       <button
         type="submit"
-        class="button is-rounded is-dark is-medium is-family-monospace"
+        class="button is-dark is-medium is-family-monospace"
         @click="visible = !visible, visible2=!visible2"
       >Go Home</button>
     </div>
@@ -161,6 +162,11 @@
 </template>
 
 <style lang="scss" scoped>
+.button {
+  min-width: 10vw;
+  margin-right: calc(0.5rem + 1vw);
+}
+
 .description {
   padding-left: calc(1rem + 1vw);
   padding-right: calc(1rem + 1vw);
@@ -205,7 +211,7 @@ export default {
     };
   },
   async asyncData({ app, params, error }) {
-    const ref = fireDb.collection("Course").doc("15CSE111");
+    const ref = fireDb.collection("Course").doc("15CSE102");
     var snap;
     var reference, referenceskeys, referencesvalues;
     var tb, tbkey, tbval;
@@ -214,7 +220,7 @@ export default {
       snap = await ref.get();
       reference = snap.data().courseDescription.references;
       tb = snap.data().courseDescription.textbooks;
-      if (reference != undefined) {
+      if (reference != "[object Object]") {
         referenceskeys = Object.entries(
           snap.data().courseDescription.references
         ).map(([key, value]) => key);
