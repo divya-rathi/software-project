@@ -121,7 +121,7 @@
             </a>
         </div>
         <button type="submit" class="button  is-dark is-medium is-family-monospace but1" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
-        <button type="submit" class="button  is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
+        <button type="submit" class=" button  is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
     </div>
 </div>
 </template>
