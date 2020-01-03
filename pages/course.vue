@@ -181,7 +181,7 @@
 </style>
 
 <script>
-import { fireDb } from "~/services/fireinit.js";
+import { fireDb } from "~/plugins/firebase.js";
 
 export default {
   data() {
