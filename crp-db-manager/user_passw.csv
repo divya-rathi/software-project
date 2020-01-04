@@ -1,0 +1,8 @@
+uid,reg-number,name,gender,email,password,phone-number,user-type
+uid1,CB.EN.U4CSE20000,Alexandria Meza,female,cb.en.u4cse20000@cb.students.amrita.edu,chocolate,+91-855-574-1153,STUDENT
+uid2,CB.EN.U4CSE20001,Jospeh Hurst,male,cb.en.u4cse20001@cb.students.amrita.edu,therapist,+91-975-552-1942,STUDENT
+uid3,CB.EN.U4CSE20002,Angelita Durham,female,cb.en.u4cse20002@cb.students.amrita.edu,systematic,+91-755-532-5687,STUDENT
+uid4,CB.EN.U4CSE20003,Sebastian Wise,male,cb.en.u4cse20003@cb.students.amrita.edu,mathematics,+91-855-538-0678,STUDENT
+uid5,CB.EN.FTCSE20000,Nuha Nash,female,cb.en.ftcse20000@cb.amrita.edu,earthquake,+91-945-552-6317,MENTOR
+uid6,CB.EN.FTCSE20001,Maxwell Thompson,male,cb.en.ftcse20001@cb.amrita.edu,conscience,+91-935-558-4487,TEACHER
+uid7,CB.EN.FTCSE20002,Stacey Olsen,female,cb.en.ftcse20002@cb.amrita.edu,vegetable,+91-925-558-0882,TEACHER

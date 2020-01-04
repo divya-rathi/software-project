@@ -3,12 +3,12 @@
     <a>
       <nuxt-link to="/course">course</nuxt-link>
     </a>
-    <button v-if="user" v-on:click="logout">Logout</button>
-    <a v-if="!user" class="is-pulled-right">
+    <button v-if="userLoggedIn" v-on:click="logout">Logout</button>
+    <a v-if="!userLoggedIn" class="is-pulled-right">
       <nuxt-link to="/login">Login</nuxt-link>
     </a>
     &nbsp; &nbsp;
-    <a class>
+    <a v-if="userLoggedIn" class>
       <nuxt-link to="/account">Account</nuxt-link>
     </a>
     <nuxt />
@@ -22,19 +22,17 @@ a {
 </style>
 
 <script>
-import firebase from "~/plugins/firebase.js";
+import { mapGetters } from "vuex";
 
 export default {
   components: {},
-  data() {
-    return {
-      user: this.$store.userLogState
-    };
-  },
   methods: {
     logout() {
-      this.$store.commit("userHandler/userLogout");
+      this.$store.dispatch("users/logout");
     }
-  }
+  },
+  computed: mapGetters({
+    userLoggedIn: "users/isUserLoggedIn"
+  })
 };
 </script>

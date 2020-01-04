@@ -11,7 +11,7 @@
               type="email"
               class="input has-text-centered"
               name="email"
-              v-model="email"
+              v-model="account.email"
               placeholder="Tell us your email address.."
             />
           </div>
@@ -22,7 +22,7 @@
             <input
               type="password"
               class="input has-text-centered"
-              v-model="password"
+              v-model="account.password"
               placeholder="Paswword here!"
             />
           </div>
@@ -70,25 +70,25 @@ h1 {
 
 <script>
 import { ParticlesBg } from "particles-bg-vue";
-import firebase from "~/plugins/firebase.js";
+
 export default {
   components: {
     ParticlesBg
   },
-
   data() {
     return {
-      email: "",
-      password: ""
+      account: {
+        email: "",
+        password: ""
+      }
     };
   },
-
   methods: {
     login() {
-      this.$store.commit("userHandler/userLogin", {
-        email: this.email,
-        password: this.password
-      });
+      this.$store
+        .dispatch("users/login", this.account)
+        .catch(err => console.log(err, this.account));
+
       this.$router.push({
         path: "/"
       });
