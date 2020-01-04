@@ -1,5 +1,5 @@
 <template>
-<section class="hero is-small is-primary is-bold">
+  <section class="hero is-small is-primary is-bold">
     <div class="hero-body">
       <div class="container">
         <h1 class="title is-family-monospace is-size-2">{{ name }}</h1>
@@ -29,27 +29,28 @@
             <div class="media inpad">Some buttons here if necessary!</div>
           </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .totext {
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
 }
 
 .title {
-    padding-left: 1vw;
+  padding-left: 1vw;
 }
 
 .hero {
-    padding-top: calc(4rem + 2vh);
-    min-height: 100vh;
+  padding-top: calc(4rem + 2vh);
+  min-height: 100vh;
 }
 
 .inpad {
-    padding-top: calc(1rem + 1vh);
+  padding-top: calc(1rem + 1vh);
 }
 </style>
 
