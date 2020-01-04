@@ -2,7 +2,7 @@
   <section class="hero is-small is-primary is-bold">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title is-family-monospace is-size-2">T P V Krishna Teja</h1>
+        <h1 class="title is-family-monospace is-size-2">{{ name }}</h1>
         <div class="media">
           <div class="media-left is-hidden-mobile">
             <figure class="image">
@@ -12,15 +12,15 @@
           <div class="media-content is-size-4 is-family-monospace inpad totext">
             <div class="media inpad">
               <div class="media-left">💂 Roll Number:</div>
-              <div class="media-content">Cb.en.u4cse17415</div>
+              <div class="media-content">{{ rollno }}</div>
             </div>
             <div class="media inpad">
               <div class="media-left">☎️ Phone:</div>
-              <div class="media-content">9440810808</div>
+              <div class="media-content">{{ phoneno }}</div>
             </div>
             <div class="media inpad">
               <div class="media-left">📧 Email:</div>
-              <div class="media-content">killimanjaro@yahooooo.com</div>
+              <div class="media-content">{{ email }}</div>
             </div>
             <div class="media inpad">
               <div class="media-left">🎯 Courses:</div>
@@ -56,16 +56,34 @@
 
 <script>
 import { ParticlesBg } from "particles-bg-vue";
-import { fireDb } from "~/plugins/firebase.js";
+import { fireDb } from "@/services/firebase";
+import { mapState } from "vuex";
 export default {
   components: {
     ParticlesBg
   },
-
   data() {
-    return {};
+    return {
+      name: null,
+      email: null,
+      rollno: null,
+      phoneno: null
+    };
   },
+  methods: {},
+  async created() {
+    let user = this.$store.state.users.user;
+    let userDetails = await fireDb
+      .collection("users")
+      .doc(user.uid)
+      .get();
 
-  methods: {}
+    userDetails = userDetails.data();
+    console.log(userDetails);
+    this.name = userDetails["name"];
+    this.email = userDetails["email"];
+    this.rollno = userDetails["registration-number"];
+    this.phoneno = userDetails["phone-number"];
+  }
 };
 </script>
