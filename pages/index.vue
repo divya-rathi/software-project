@@ -1,119 +1,124 @@
 <template>
-<div class="carousel column is-12-touch">
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> 
-  <font-awesome-icon :icon="['fas', 'angle-left']" style="font-size: 50px" class="is-centered "/>
-      <span class=" is-centered carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-  </a>
-  <div class="card top">
-    <div class="card-image">
-      <figure class="image">
-        <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
+<section class="section edo-theme">
+    <div class="carousel">
+        <div class="card top">
+            <div class="card-image">
+                <figure class="image">
+                    <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris.
+                </div>
+                <a class="btn btn-primary btn-md btn-rounded">View</a>
+            </div>
         </div>
-      </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris.
-      </div>
-      <a class="button is-rounded">View</a>
-    </div>
-  </div>
 
-  <div class="card top">
-    <div class="card-image">
-      <figure class="image">
-        <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
+        <div class="card top">
+            <div class="card-image">
+                <figure class="image">
+                    <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris.
+                </div>
+                <a class="btn btn-primary btn-md btn-rounded">View</a>
+            </div>
         </div>
-      </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris.
-      </div>
-      <a class="button is-rounded">View</a>
-    </div>
-  </div>
 
-  <div class="card top">
-    <div class="card-image">
-      <figure class="image">
-        <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
+        <div class="card top">
+            <div class="card-image">
+                <figure class="image">
+                    <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris.
+                </div>
+                <a class="btn btn-primary btn-md btn-rounded">View</a>
+            </div>
         </div>
-      </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. 
-      </div>
-      <a class="button is-rounded" onclick="myFunction()">View</a>
-    </div>
-  </div>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-    <font-awesome-icon :icon="['fas', 'angle-right']" style="font-size: 50px"/>
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-  </a>
-  <p id="demo"></p>
-</div>
 
+    </div>
+
+</section>
 </template>
 
-<style>
-.carousel{
-  display: flex;
-  height: auto;
-  margin-top: 200px;
-  margin-bottom: 100px;
+<style lang="scss" scoped>
+.carousel {
+    display: flex;
+    height: auto;
+    margin-top: 60px;
+    margin-bottom: 100px;
 }
-.top{
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 25%;
-}
-.button{
-    background-color: #03A9F4;
-}
-.carousel-control-prev, .carousel-control-next{
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
-  color: lightseagreen;
-}
-@media screen and (max-width: 520px) {
-  .carousel{
-    width: 100%;
-    display: block;
-  }
-  .top {
+
+.top {
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    width: 75%;
-    margin-bottom: 200px;
-  }
-  .carousel-control-prev, .carousel-control-next{
-    display: none;
-  }
+    width: 25%;
 }
 
+a.btn.btn-primary {
+    color: #fff;
+    font-size: 14px;
+}
+
+.btn.btn-md {
+    padding: .7rem 1.6rem;
+    font-size: .7rem
+}
+
+.btn-md {
+    padding-top: .58rem;
+    padding-bottom: .58rem
+}
+
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em
+}
+
+.btn-primary {
+    background-color: #4285f4 !important;
+    color: #fff;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
 </style>
+
+<script>
+export default {
+    components: {}
+}
+</script>

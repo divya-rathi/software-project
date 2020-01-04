@@ -11,10 +11,6 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/axios": "^5.3.6",
     "bulma": "^0.8.0",
     "cookieparser": "^0.1.0",
@@ -25,7 +21,6 @@
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "nuxt": "^2.0.0",
-    "nuxt-fontawesome": "^0.4.0",
     "particles-bg-vue": "^1.2.3"
   },
   "devDependencies": {
