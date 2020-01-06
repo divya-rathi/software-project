@@ -32,8 +32,8 @@ for key, val in reqText.items():
     outText[key]['courseDescription']['units'] = dict()
     outText[key]['courseDescription']['textbooks'] = dict()
     outText[key]['courseDescription']['references'] = dict()
-    outText[key]['Reviews'] = list()
-    outText[key]['Questions'] = list()
+    outText[key]['reviews'] = list()
+    outText[key]['questions'] = list()
 
     state = 0
     buffer = list()

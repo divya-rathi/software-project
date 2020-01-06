@@ -211,7 +211,7 @@ export default {
     };
   },
   async asyncData({ app, params, error }) {
-    const ref = fireDb.collection("Course").doc("15CSE102");
+    const ref = fireDb.collection("courses").doc("15CSE102");
     var snap;
     var reference, referenceskeys, referencesvalues;
     var tb, tbkey, tbval;

@@ -82,8 +82,8 @@ export default {
     console.log(userDetails);
     this.name = userDetails["name"];
     this.email = userDetails["email"];
-    this.rollno = userDetails["registration-number"];
-    this.phoneno = userDetails["phone-number"];
+    this.rollno = userDetails["registrationNumber"];
+    this.phoneno = userDetails["phoneNumber"];
   }
 };
 </script>
