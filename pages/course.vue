@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="field">
+      <label class="label">Course Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Text input" v-model="courseSearch" />
+      </div>
+      <div class="control">
+        <button class="button is-link" v-on:click="searchCourse">Search</button>
+      </div>
+    </div>
     <div v-if="!visible" class="hero is-fullheight">
       <h1
         class="has-text-centered is-size-1 is-family-sans-serif title"
@@ -195,9 +204,11 @@ export default {
       visible: false,
       visible1: false,
       visible2: false,
-      code: "15CSE102",
+      code: "",
+      courseSearch: "",
       courseName: "",
       courseCode: "",
+      courseDetails: "",
       courseDescriptionkey: "",
       courseDescriptionvalue: "",
 
@@ -210,51 +221,98 @@ export default {
       referencesvalue: ""
     };
   },
-  async asyncData({ app, params, error }) {
-    const ref = fireDb.collection("courses").doc("15CSE102");
-    var snap;
-    var reference, referenceskeys, referencesvalues;
-    var tb, tbkey, tbval;
+  // async asyncData({ app, params, error }) {
+  //   const ref = fireDb.collection("courses").doc("15CSE102");
+  //   var snap;
+  //   var reference, referenceskeys, referencesvalues;
+  //   var tb, tbkey, tbval;
 
-    try {
-      snap = await ref.get();
-      reference = snap.data().courseDescription.references;
-      tb = snap.data().courseDescription.textbooks;
-      if (reference != "[object Object]") {
-        referenceskeys = Object.entries(
-          snap.data().courseDescription.references
-        ).map(([key, value]) => key);
-        referencesvalues = Object.entries(
-          snap.data().courseDescription.references
-        ).map(([key, value]) => value);
-      }
+  //   try {
+  //     snap = await ref.get();
+  //     reference = snap.data().courseDescription.references;
+  //     tb = snap.data().courseDescription.textbooks;
+  //     if (reference != "[object Object]") {
+  //       referenceskeys = Object.entries(
+  //         snap.data().courseDescription.references
+  //       ).map(([key, value]) => key);
+  //       referencesvalues = Object.entries(
+  //         snap.data().courseDescription.references
+  //       ).map(([key, value]) => value);
+  //     }
 
-      if (tb != undefined) {
-        tbkey = Object.entries(snap.data().courseDescription.textbooks).map(
-          ([key, value]) => key
-        );
-        tbval = Object.entries(snap.data().courseDescription.textbooks).map(
-          ([key, value]) => value
-        );
+  //     if (tb != undefined) {
+  //       tbkey = Object.entries(snap.data().courseDescription.textbooks).map(
+  //         ([key, value]) => key
+  //       );
+  //       tbval = Object.entries(snap.data().courseDescription.textbooks).map(
+  //         ([key, value]) => value
+  //       );
+  //     }
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  //   return {
+  //     courseCode: snap.data().courseCode,
+  //     courseName: snap.data().courseName,
+  //     courseDescriptionkey: Object.entries(
+  //       snap.data().courseDescription.units
+  //     ).map(([key, value]) => key),
+  //     courseDescriptionvalue: Object.entries(
+  //       snap.data().courseDescription.units
+  //     ).map(([key, value]) => value),
+  //     textbookskey: tbkey,
+  //     textbooksvalue: tbval,
+  //     references: reference,
+  //     referenceskey: referenceskeys,
+  //     referencesvalue: referencesvalues
+  //   };
+  // },
+  methods: {
+    async searchCourse() {
+      const ref = fireDb.collection("courses").doc(this.courseSearch);
+      var snap;
+      var courseDetails;
+      var reference, referenceskeys, referencesvalues;
+      var tb, tbkey, tbval;
+
+      try {
+        snap = await ref.get();
+        courseDetails = snap.data();
+        tb = snap.data().courseDescription.textbooks;
+        if (reference != "[object Object]") {
+          referenceskeys = Object.entries(
+            snap.data().courseDescription.references
+          ).map(([key, value]) => key);
+          referencesvalues = Object.entries(
+            snap.data().courseDescription.references
+          ).map(([key, value]) => value);
+        }
+
+        if (tb != undefined) {
+          tbkey = Object.entries(snap.data().courseDescription.textbooks).map(
+            ([key, value]) => key
+          );
+          tbval = Object.entries(snap.data().courseDescription.textbooks).map(
+            ([key, value]) => value
+          );
+        }
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
+      this.courseCode = courseDetails.courseCode;
+      this.courseName = courseDetails.courseName;
+      this.courseDescriptionkey = Object.entries(
+        courseDetails.courseDescription.units
+      ).map(([key, value]) => key);
+      this.courseDescriptionvalue = Object.entries(
+        courseDetails.courseDescription.units
+      ).map(([key, value]) => value);
+      this.textbookskey = tbkey;
+      this.textbooksvalue = tbval;
+      this.references = reference;
+      this.referenceskey = referenceskeys;
+      this.referencesvalue = referencesvalues;
     }
-    return {
-      courseCode: snap.data().courseCode,
-      courseName: snap.data().courseName,
-      courseDescriptionkey: Object.entries(
-        snap.data().courseDescription.units
-      ).map(([key, value]) => key),
-      courseDescriptionvalue: Object.entries(
-        snap.data().courseDescription.units
-      ).map(([key, value]) => value),
-      textbookskey: tbkey,
-      textbooksvalue: tbval,
-      references: reference,
-      referenceskey: referenceskeys,
-      referencesvalue: referencesvalues
-    };
   }
 };
 </script>
