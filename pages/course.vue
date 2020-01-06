@@ -206,8 +206,8 @@ export default {
       visible2: false,
       code: "",
       courseSearch: "",
-      courseName: "",
-      courseCode: "",
+      courseName: this.$route.params.courseName,
+      courseCode: this.$route.params.courseCode,
       courseDetails: "",
       courseDescriptionkey: "",
       courseDescriptionvalue: "",
@@ -221,6 +221,10 @@ export default {
       referencesvalue: ""
     };
   },
+  mounted: function(){
+            this.courseSearch=this.courseCode;
+               this.searchCourse();
+    },
   // async asyncData({ app, params, error }) {
   //   const ref = fireDb.collection("courses").doc("15CSE102");
   //   var snap;
