@@ -206,8 +206,8 @@ export default {
       visible2: false,
       code: "",
       courseSearch: "",
-      courseName: "",
-      courseCode: "",
+      courseName: this.$route.params.courseName,
+      courseCode: this.$route.params.courseCode,
       courseDetails: "",
       courseDescriptionkey: "",
       courseDescriptionvalue: "",
@@ -267,6 +267,10 @@ export default {
   //     referencesvalue: referencesvalues
   //   };
   // },
+  mounted: function(){
+            this.courseSearch=this.courseCode;
+               this.searchCourse();
+    },
   methods: {
     async searchCourse() {
       const ref = fireDb.collection("courses").doc(this.courseSearch);
@@ -312,7 +316,7 @@ export default {
       this.references = reference;
       this.referenceskey = referenceskeys;
       this.referencesvalue = referencesvalues;
-    }
+    },
   }
 };
 </script>

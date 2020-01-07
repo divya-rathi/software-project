@@ -18,7 +18,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-                <a class="btn btn-primary btn-md btn-rounded">View</a>
+                <router-link :to="{ name: 'course', params: { courseCode: '15CSE111', courseName:'Computer Science Essentials' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-                <a class="btn btn-primary btn-md btn-rounded">View</a>
+               <router-link :to="{ name: 'course', params: { courseCode: '15CSE102', courseName:'Computer Networks' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-                <a class="btn btn-primary btn-md btn-rounded">View</a>
+                <router-link :to="{ name: 'course', params: { courseCode: '15CSE111', courseName:'Object Oriented Programming' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
             </div>
         </div>
 
@@ -120,5 +120,6 @@ a.btn.btn-primary {
 <script>
 export default {
     components: {}
+    
 }
 </script>
