@@ -1,5 +1,6 @@
 import JWTDecode from "jwt-decode";
 import cookieparser from "cookieparser";
+import createPersistedState from "vuex-persistedstate";
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
@@ -21,3 +22,9 @@ export const actions = {
     }
   }
 };
+
+export const plugins = [
+  createPersistedState({
+    paths: ["users"]
+  })
+];
