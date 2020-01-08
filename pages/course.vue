@@ -6,6 +6,7 @@
       >{{courseCode}} - {{ courseDetails.courseName }}</h1>
       <div class="hero-body">
         <div class="container">
+        
           <div class="columns">
             <div class="column card is-hidden-mobile">
               <div
