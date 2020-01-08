@@ -1,18 +1,9 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Course Name</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Text input" v-model="courseSearch" />
-      </div>
-      <div class="control">
-        <button class="button is-link" v-on:click="searchCourse">Search</button>
-      </div>
-    </div>
     <div v-if="!visible" class="hero is-fullheight">
       <h1
         class="has-text-centered is-size-1 is-family-sans-serif title"
-      >{{courseCode}} - {{ courseName }}</h1>
+      >{{courseCode}} - {{ courseDetails.courseName }}</h1>
       <div class="hero-body">
         <div class="container">
           <div class="columns">
@@ -23,31 +14,40 @@
               <div class="has-text-centered">Rating comes here</div>
             </div>
             <div class="column is-three-quarters description">
-              <div v-for="(val,index) in courseDescriptionkey" :key="index" class="content">
-                <p
-                  class="subtitle is-size-4 is-family-monospace has-text-centered"
-                >{{val}}: {{courseDescriptionvalue[index]}}</p>
+              <div
+                v-for="(key,val) in courseDetails.courseDescription.units"
+                :key="val"
+                class="content"
+              >
+                <p class="subtitle is-size-4 is-family-monospace has-text-centered">
+                  <span><strong>{{val}}</strong></span>
+                  <span>{{key}}</span>
+                </p>
                 <hr />
               </div>
 
-              <div v-if="textbook != undefined">
+              <div v-if="courseDetails.courseDescription.textbooks != {}">
                 <h2 class="is-size-3 has-text-centered is-family-sans-serif">Text Books</h2>
                 <br />
-                <div v-for="(val,index) in textbookskey" :key="index" class="content">
-                  <p
-                    class="subtitle is-size-4 is-family-monospace has-text-centered"
-                  >{{val}}: {{textbooksvalue[index]}}</p>
+                <div
+                  v-for="val in courseDetails.courseDescription.textbooks"
+                  :key="val"
+                  class="content"
+                >
+                  <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}</p>
                   <hr />
                 </div>
               </div>
 
-              <div v-if="references != '[object Object]'">
+              <div v-if="courseDetails.courseDescription.references != {}">
                 <h2 class="is-size-3 has-text-centered is-family-sans-serif">References</h2>
                 <br />
-                <div v-for="(val,index) in referenceskey" :key="index" class="content">
-                  <p
-                    class="subtitle is-size-4 is-family-monospace has-text-centered"
-                  >{{val}}: {{referencesvalue[index]}}</p>
+                <div
+                  v-for="val in courseDetails.courseDescription.references"
+                  :key="val"
+                  class="content"
+                >
+                  <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{val}}</p>
                   <hr />
                 </div>
               </div>
@@ -197,34 +197,33 @@
 
 <script>
 import { fireDb } from "@/services/firebase.js";
-
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       visible: false,
       visible1: false,
-      visible2: false,
-      code: "",
-      courseSearch: "",
-      courseName: this.$route.params.courseName,
-      courseCode: this.$route.params.courseCode,
-      courseDetails: "",
-      courseDescriptionkey: "",
-      courseDescriptionvalue: "",
+      visible2: false
+      //     code: "",
+      //     courseName: this.$route.params.courseName,
+      //     courseCode: this.$route.params.courseCode,
+      //     courseDetails: "",
+      //     courseDescriptionkey: "",
+      //     courseDescriptionvalue: "",
 
-      textbook: "",
-      textbookskey: "",
-      textbooksvalue: "",
+      //     textbook: "",
+      //     textbookskey: "",
+      //     textbooksvalue: "",
 
-      references: "",
-      referenceskey: "",
-      referencesvalue: ""
+      //     references: "",
+      //     referenceskey: "",
+      //     referencesvalue: ""
     };
   },
-  mounted: function(){
-            this.courseSearch=this.courseCode;
-               this.searchCourse();
-    },
+  // mounted: function() {
+  //   this.courseSearch = this.courseCode;
+  //   this.searchCourse();
+  // },
   // async asyncData({ app, params, error }) {
   //   const ref = fireDb.collection("courses").doc("15CSE102");
   //   var snap;
@@ -271,52 +270,11 @@ export default {
   //     referencesvalue: referencesvalues
   //   };
   // },
-  methods: {
-    async searchCourse() {
-      const ref = fireDb.collection("courses").doc(this.courseSearch);
-      var snap;
-      var courseDetails;
-      var reference, referenceskeys, referencesvalues;
-      var tb, tbkey, tbval;
-
-      try {
-        snap = await ref.get();
-        courseDetails = snap.data();
-        tb = snap.data().courseDescription.textbooks;
-        if (reference != "[object Object]") {
-          referenceskeys = Object.entries(
-            snap.data().courseDescription.references
-          ).map(([key, value]) => key);
-          referencesvalues = Object.entries(
-            snap.data().courseDescription.references
-          ).map(([key, value]) => value);
-        }
-
-        if (tb != undefined) {
-          tbkey = Object.entries(snap.data().courseDescription.textbooks).map(
-            ([key, value]) => key
-          );
-          tbval = Object.entries(snap.data().courseDescription.textbooks).map(
-            ([key, value]) => value
-          );
-        }
-      } catch (e) {
-        console.error(e);
-      }
-      this.courseCode = courseDetails.courseCode;
-      this.courseName = courseDetails.courseName;
-      this.courseDescriptionkey = Object.entries(
-        courseDetails.courseDescription.units
-      ).map(([key, value]) => key);
-      this.courseDescriptionvalue = Object.entries(
-        courseDetails.courseDescription.units
-      ).map(([key, value]) => value);
-      this.textbookskey = tbkey;
-      this.textbooksvalue = tbval;
-      this.references = reference;
-      this.referenceskey = referenceskeys;
-      this.referencesvalue = referencesvalues;
-    }
+  computed: {
+    ...mapGetters({
+      courseCode: "course/getCourseCode",
+      courseDetails: "course/getCourseDetails"
+    })
   }
 };
 </script>

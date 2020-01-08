@@ -25,6 +25,6 @@ export const actions = {
 
 export const plugins = [
   createPersistedState({
-    paths: ["users"]
+    paths: ["users", "course"]
   })
 ];
