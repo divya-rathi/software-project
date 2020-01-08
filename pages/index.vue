@@ -18,7 +18,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-                <router-link :to="{ name: 'course', params: { courseCode: '15CSE111', courseName:'Computer Science Essentials' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
+                <router-link :to="{name:'course'}" class="btn btn-primary btn-md btn-rounded" @click.native="setcourseCode(courseCode1)">View</router-link>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-               <router-link :to="{ name: 'course', params: { courseCode: '15CSE102', courseName:'Computer Networks' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
+               <router-link :to="{name:'course'}" class="btn btn-primary btn-md btn-rounded" @click.native="setcourseCode(courseCode2)">View</router-link>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                 </div>
-                <router-link :to="{ name: 'course', params: { courseCode: '15CSE111', courseName:'Object Oriented Programming' } }" class="btn btn-primary btn-md btn-rounded">View</router-link>
+               <router-link :to="{name:'course'}" class="btn btn-primary btn-md btn-rounded" @click.native="setcourseCode(courseCode3)">View</router-link>
             </div>
         </div>
 
@@ -119,7 +119,21 @@ a.btn.btn-primary {
 
 <script>
 export default {
-    components: {}
+    components: {},
+    data(){
+        return{
+            courseCode1:"15CSE111",
+            courseCode2:"15CSE102",
+            courseCode3:"15CSE111",
+        }
+    },
+    methods:{
+        setcourseCode(courseCode){
+            this.$store.dispatch('course/search',courseCode);
+            
+        },
+    }
+    
     
 }
 </script>
