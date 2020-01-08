@@ -6,7 +6,6 @@
       >{{courseCode}} - {{ courseDetails.courseName }}</h1>
       <div class="hero-body">
         <div class="container">
-        
           <div class="columns">
             <div class="column card is-hidden-mobile">
               <div
@@ -20,14 +19,12 @@
                 :key="val"
                 class="content"
               >
-                <p class="subtitle is-size-4 is-family-monospace has-text-centered">
-                  <span><strong>{{val}}</strong></span>
-                  <span>{{key}}</span>
-                </p>
+                <p class="title is-size-4 is-family-monospace has-text-centered">{{val}}</p>
+                <p class="subtitle is-size-4 is-family-monospace has-text-centered">{{key}}</p>
                 <hr />
               </div>
 
-              <div v-if="courseDetails.courseDescription.textbooks != {}">
+              <div v-if="courseDetails.courseDescription.textbooks.length != 0">
                 <h2 class="is-size-3 has-text-centered is-family-sans-serif">Text Books</h2>
                 <br />
                 <div
@@ -39,8 +36,7 @@
                   <hr />
                 </div>
               </div>
-
-              <div v-if="courseDetails.courseDescription.references != {}">
+              <div v-if="courseDetails.courseDescription.references !== 0">
                 <h2 class="is-size-3 has-text-centered is-family-sans-serif">References</h2>
                 <br />
                 <div
