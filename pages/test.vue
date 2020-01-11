@@ -57,7 +57,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content">
-                            <p class="title is-4">{{courseCode3}}</p>
+                            <p class="title is-4">{{courseCodeList[1]}}</p>
                             <p class="subtitle is-6">@johnsmith</p>
                         </div>
                     </div>
@@ -138,21 +138,28 @@ export default {
             courseCode1: "15CSE111",
             courseCode2: "15CSE102",
             courseCode3: "15CSE111",
+            courseCodeList: [],
+            courseNameList: []
         }
     },
+
     methods: {
         setcourseCode(courseCode) {
-            let courseCodeList = new Array();
-            let courseNameList = new Array();
-
             this.$store.dispatch('course/search', courseCode);
-            db.collection("courses").get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    courseCodeList.push(doc.id);
-                    courseNameList.push(doc.data().courseName);
-                });
-            });
+            console.log("hello");
         }
+    },
+    mounted() {
+
+        // what to do to connect to db??
+        // db.collection("courses").get().then(function (querySnapshot) {
+        //     querySnapshot.forEach(function (doc) {
+        //         this.courseCodeList.push(doc.id);
+        //         this.courseNameList.push(doc.data().courseName);
+        //     });
+        //     console.log(this.courseCodeList);
+        // });
+        console.log("helllo mounted")
     }
 }
 </script>
