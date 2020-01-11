@@ -21,7 +21,7 @@ async function start () {
     await nuxt.ready()
   }
 
-  // Give nuxt middleware to express
+  // Give nuxt middleware to  express
   app.use(nuxt.render)
 
   // Listen the server
