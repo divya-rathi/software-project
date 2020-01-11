@@ -124,13 +124,12 @@ export default {
         return{
             courseCode1:"15CSE111",
             courseCode2:"15CSE102",
-            courseCode3:"15CSE111",
+            courseCode3:"15CSE100",
         }
     },
     methods:{
         setcourseCode(courseCode){
-            this.$store.dispatch('course/search',courseCode);
-            
+            this.$store.dispatch('course/search',courseCode); 
         },
     }
     
