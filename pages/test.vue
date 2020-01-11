@@ -142,7 +142,16 @@ export default {
     },
     methods: {
         setcourseCode(courseCode) {
+            let courseCodeList = new Array();
+            let courseNameList = new Array();
+
             this.$store.dispatch('course/search', courseCode);
+            db.collection("courses").get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    courseCodeList.push(doc.id);
+                    courseNameList.push(doc.data().courseName);
+                });
+            });
         }
     }
 }
