@@ -1,5 +1,5 @@
 <template>
-<div class>
+<div class="tot">
     <hooper :settings="hooperSettings">
         <slide class="has-text-centered" v-for="(code,index) in courseCodeList" :key="index">
             <div class="card">
@@ -34,7 +34,7 @@
 }
 
 .card {
-    margin: 2rem;
+    margin: 3rem;
 }
 </style>
 
