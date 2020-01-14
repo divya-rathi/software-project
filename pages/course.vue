@@ -1,6 +1,6 @@
 <template>
-<div>
-    <div v-if="!visible" class="hero is-fullheight">
+<div class="hero is-fullheight">
+    <div v-if="!visible">
         <h1 class="has-text-centered is-size-1 is-family-sans-serif title">{{courseCode}} - {{ courseDetails.courseName }}</h1>
         <div class="hero-body">
             <div class="container">
@@ -33,11 +33,9 @@
                             </div>
                         </div>
 
-                        <div>
-                            <div class="control has-text-centered bottom1">
-                                <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
-                                <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Review</button>
-                            </div>
+                        <div class="control has-text-centered">
+                            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
+                            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Review</button>
                         </div>
                     </div>
                 </div>
@@ -46,6 +44,8 @@
     </div>
 
     <!-- ----------------------------------------------------------------------------------------- -->
+    <!-- Questions -->
+
     <div v-if="visible1" class="container has-text-centered">
         <h1 class="title is-family-secondary is-size-1">Questions</h1>
         <div class="panel">
@@ -53,7 +53,7 @@
                 <span class="panel-icon">
                     <i class="fas fa-book" aria-hidden="true"></i>
                 </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nam itaque possimus alias perferendis, dolores cumque inventore ut. Fuga ipsam ducimus cum vitae repudiandae nemo, ut ullam distinctio maiores! Vitae.
+                <Accordion class="accordion has-text-centered" question="Who can register?" answer="Any one who paid fee can register this course." />
             </a>
             <a class="panel-block">
                 <span class="panel-icon">
@@ -80,8 +80,10 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
             </a>
         </div>
-        <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible1 = !visible1, visible2=!visible2">Review</button>
-        <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Go Home</button>
+        <div class="control has-text-centered pad">
+            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible1 = !visible1, visible2=!visible2">Review</button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Go Home</button>
+        </div>
     </div>
 
     <!-- ----------------------------------------------------------------------------------------------- -->
@@ -121,14 +123,18 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi i llo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
             </a>
         </div>
-        <button type="submit" class="button is-dark is-medium is-family-monospace but1" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
-        <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
+        <div class="control has-text-centered pad">
+            <button type="submit" class="button is-dark is-medium is-family-monospace but1" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
+        </div>
+
     </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .button {
+    color: white;
     min-width: 10vw;
     margin-right: calc(0.5rem + 1vw);
 }
@@ -143,8 +149,8 @@
     padding-bottom: calc(1rem + 2vh);
 }
 
-.button {
-    color: white;
+.pad {
+    padding-bottom: 2rem;
 }
 
 .title {
@@ -159,7 +165,12 @@ import {
 import {
     mapGetters
 } from "vuex";
+import Accordion from '~/components/Accordion';
+
 export default {
+    components: {
+        Accordion
+    },
     data() {
         return {
             visible: false,

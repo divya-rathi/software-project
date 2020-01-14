@@ -42,8 +42,10 @@
 import {
     Hooper,
     Slide,
-    Navigation as HooperNavigation
+    Navigation as HooperNavigation,
 } from "hooper";
+import Accordion from '~/components/Accordion';
+
 import "hooper/dist/hooper.css";
 import {
     fireDb
@@ -53,7 +55,8 @@ export default {
     components: {
         Hooper,
         Slide,
-        HooperNavigation
+        HooperNavigation,
+        Accordion
     },
     data() {
         return {
