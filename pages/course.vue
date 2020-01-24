@@ -192,6 +192,12 @@ export default {
             //     referencesvalue: ""
         };
     },
+      methods: {
+        setquestions() {
+           this.q=courseDetails.courseDescription.qusetions.questions,
+            this.a=courseDetails.courseDescription.qusetions.answers
+        }
+    },
     // mounted: function() {
     //   this.courseSearch = this.courseCode;
     //   this.searchCourse();
