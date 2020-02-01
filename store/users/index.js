@@ -2,18 +2,22 @@ import { auth } from "@/services/firebase";
 import Cookie from "js-cookie";
 
 export const store = () => ({
-  user: null
+  uid: null,
+  userDetails: null
 });
 
 export const mutations = {
-  SET_USER: (state, account) => {
-    window.$nuxt.$set(state, "user", account);
+  SET_UID: (state, uid) => {
+    window.$nuxt.$set(state, "uid", uid);
+  },
+  SET_USER_DETAILS: (state, userDetails) => {
+    window.$nuxt.$set(state, "userDetails", userDetails);
   }
 };
 
 export const getters = {
   isUserLoggedIn(state) {
-    return state.user != null;
+    return state.uid != null;
   }
 };
 
@@ -26,9 +30,11 @@ export const actions = {
 
       Cookie.set("access_token", token);
 
-      const { email, uid } = auth.currentUser;
+      const userDetails = auth.currentUser;
 
-      await commit("SET_USER", { email, uid });
+      await commit("SET_UID", userDetails.uid);
+
+      await commit("SET_USER_DETAILS", userDetails);
 
       console.log("Successfully logged in!");
     } catch (err) {
@@ -37,7 +43,8 @@ export const actions = {
   },
   async logout({ commit }) {
     await auth.signOut();
-    await commit("SET_USER", null);
+    await commit("SET_UID", null);
+    await commit("SET_USER_DETAILS", null);
     this.$router.push({ path: "/" });
     console.log("Successfully logged out!");
   }

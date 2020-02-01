@@ -1,6 +1,7 @@
 import JWTDecode from "jwt-decode";
 import cookieparser from "cookieparser";
 import createPersistedState from "vuex-persistedstate";
+import { fireDb } from "@/services/firebase";
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
@@ -15,10 +16,18 @@ export const actions = {
     const decoded = JWTDecode(accessTokenCookie);
 
     if (decoded) {
-      commit("SET_USER", {
-        uid: decoded.user_id,
-        email: decoded.email
-      });
+      commit("SET_UID", decoded.user_id);
+      fireDb
+        .collection(users)
+        .doc(decoded.user_id)
+        .get()
+        .then(function(doc) {
+          if (doc.exists) {
+            commit("SET_USER_DETAILS", doc.data());
+          } else {
+            commit("SET_USER_DETAILS", null);
+          }
+        });
     }
   }
 };
