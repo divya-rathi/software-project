@@ -26,6 +26,7 @@
     "nuxt-lazy-load": "^1.0.5",
     "particles-bg-vue": "^1.2.3",
     "vue-grd": "^1.2.2",
+    "vue-star-rating": "^1.6.1",
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 <template>
 <div class="hero is-fullheight">
     <div class="container has-text-centered">
-        <h1 class="title is-family-secondary is-size-1">Reviews</h1>
+        <h1 class="title is-family-secondary is-size-1">Questions</h1>
         <div class="panel">
             <a class="panel-block">
                 <span class="panel-icon">
@@ -35,11 +35,11 @@
             </a>
         </div>
         <div class="control has-text-centered pad">
-            <button type="submit" class="button is-dark is-medium is-family-monospace"><nuxt-link to="q&a">Q&A</nuxt-link></button>
-            <button type="submit" class="button is-dark is-medium is-family-monospace" v-on:click="showModal">Post Review</button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace"><nuxt-link to="/review">Review</nuxt-link></button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace" v-on:click="showModal">Post Question</button>
         </div>
-        <modal v-show="isModalVisible" @close="closeModal" />
     </div>
+    <modal v-show="isModalVisible" @close="closeModal" />
 </div>
 </template>
 
@@ -71,7 +71,7 @@
 
 <script>
 import Accordion from '~/components/Accordion';
-import modal from '~/components/post_review_modal.vue';
+import modal from '~/components/post_ques_modal.vue';
 
 export default {
     components: {
@@ -84,6 +84,7 @@ export default {
             duration: 5000,
             isStudent: true,
             isModalVisible: false,
+
         };
     },
     methods: {

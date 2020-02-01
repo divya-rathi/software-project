@@ -34,101 +34,16 @@
                         </div>
 
                         <div class="control has-text-centered">
-                            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Q&A</button>
-                            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Review</button>
+                            <button type="submit" class="button is-dark is-medium is-family-monospace">
+                                <nuxt-link to='/Q&A'>Q&A</nuxt-link>
+                            </button>
+                            <button type="submit" class="button is-dark is-medium is-family-monospace"><nuxt-link to='/review'>Reviews</nuxt-link></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- ----------------------------------------------------------------------------------------- -->
-    <!-- Questions -->
-
-    <div v-if="visible1" class="container has-text-centered">
-        <h1 class="title is-family-secondary is-size-1">Questions</h1>
-        <div class="panel">
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                <Accordion class="accordion has-text-centered" question="Who can register?" answer="Any one who paid fee can register this course." />
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio saepe corporis nulla, incidunt officia quae aliquid laboriosam, similique labore modi nihil repellendus aperiam. Ducimus aperiam quidem, cum libero voluptas sint.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo provident quis officia numquam? Itaque laudantium vitae ut, velit nobis culpa. Magnam sequi laborum ab quos mollitia corporis voluptate alias nesciunt.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti doloremque quisquam obcaecati voluptatibus dolorum laboriosam eveniet quaerat maiores similique. Nihil fuga animi esse velit vel corporis atque nisi quasi. Voluptatibus.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
-            </a>
-        </div>
-        <div class="control has-text-centered pad">
-            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible1 = !visible1, visible2=!visible2">Review</button>
-            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible1=!visible1">Go Home</button>
-        </div>
-    </div>
-
-    <!-- ----------------------------------------------------------------------------------------------- -->
-
-    <div v-if="visible2" class="container has-text-centered">
-        <h1 class="title is-family-secondary is-size-1">Reviews</h1>
-        <div class="panel">
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nam itaque possimus alias perferendis, dolores cumque inventore ut. Fuga ipsam ducimus cum vitae repudiandae nemo, ut ullam distinctio maiores! Vitae.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio saepe corporis nulla, incidunt officia quae aliquid laboriosam, similique labore modi nihil repellendus aperiam. Ducimus aperiam quidem, cum libero voluptas sint.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo provident quis officia numquam? Itaque laudantium vitae ut, velit nobis culpa. Magnam sequi laborum ab quos mollitia corporis voluptate alias nesciunt.
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti doloremque quisquam obcaecati voluptatibus dolorum laboriosam eveniet quaerat maiores similique. Nihil fuga animi esse velit vel corporis atque nisi quasi. Voluptatibus.
-            </a>
-
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas, ipsum, veritatis sint debitis cumque at voluptates id deserunt nisi i llo temporibus sed eum in fugiat obcaecati asperiores consequatur illum?
-            </a>
-        </div>
-        <div class="control has-text-centered pad">
-            <button type="submit" class="button is-dark is-medium is-family-monospace but1" @click="visible2 = !visible2, visible1=!visible1">Q&A</button>
-            <button type="submit" class="button is-dark is-medium is-family-monospace" @click="visible = !visible, visible2=!visible2">Go Home</button>
-        </div>
-
-    </div>
+    </div>  
 </div>
 </template>
 
@@ -156,6 +71,7 @@
 .title {
     padding-top: calc(1.5rem + 2vh);
 }
+
 </style>
 
 <script>
@@ -166,88 +82,31 @@ import {
     mapGetters
 } from "vuex";
 import Accordion from '~/components/Accordion';
+import StarRating from 'vue-star-rating';
 
 export default {
     components: {
-        Accordion
+        Accordion,
+        StarRating
     },
     data() {
         return {
             visible: false,
             visible1: false,
-            visible2: false
-            //     code: "",
-            //     courseName: this.$route.params.courseName,
-            //     courseCode: this.$route.params.courseCode,
-            //     courseDetails: "",
-            //     courseDescriptionkey: "",
-            //     courseDescriptionvalue: "",
-
-            //     textbook: "",
-            //     textbookskey: "",
-            //     textbooksvalue: "",
-
-            //     references: "",
-            //     referenceskey: "",
-            //     referencesvalue: ""
+            visible2: false,
+            rating: 0,
+            review: "",
+            isStudent: true
         };
     },
-      methods: {
+
+    methods: {
         setquestions() {
-           this.q=courseDetails.courseDescription.qusetions.questions,
-            this.a=courseDetails.courseDescription.qusetions.answers
+            this.q = courseDetails.courseDescription.qusetions.questions,
+                this.a = courseDetails.courseDescription.qusetions.answers
         }
     },
-    // mounted: function() {
-    //   this.courseSearch = this.courseCode;
-    //   this.searchCourse();
-    // },
-    // async asyncData({ app, params, error }) {
-    //   const ref = fireDb.collection("courses").doc("15CSE102");
-    //   var snap;
-    //   var reference, referenceskeys, referencesvalues;
-    //   var tb, tbkey, tbval;
 
-    //   try {
-    //     snap = await ref.get();
-    //     reference = snap.data().courseDescription.references;
-    //     tb = snap.data().courseDescription.textbooks;
-    //     if (reference != "[object Object]") {
-    //       referenceskeys = Object.entries(
-    //         snap.data().courseDescription.references
-    //       ).map(([key, value]) => key);
-    //       referencesvalues = Object.entries(
-    //         snap.data().courseDescription.references
-    //       ).map(([key, value]) => value);
-    //     }
-
-    //     if (tb != undefined) {
-    //       tbkey = Object.entries(snap.data().courseDescription.textbooks).map(
-    //         ([key, value]) => key
-    //       );
-    //       tbval = Object.entries(snap.data().courseDescription.textbooks).map(
-    //         ([key, value]) => value
-    //       );
-    //     }
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    //   return {
-    //     courseCode: snap.data().courseCode,
-    //     courseName: snap.data().courseName,
-    //     courseDescriptionkey: Object.entries(
-    //       snap.data().courseDescription.units
-    //     ).map(([key, value]) => key),
-    //     courseDescriptionvalue: Object.entries(
-    //       snap.data().courseDescription.units
-    //     ).map(([key, value]) => value),
-    //     textbookskey: tbkey,
-    //     textbooksvalue: tbval,
-    //     references: reference,
-    //     referenceskey: referenceskeys,
-    //     referencesvalue: referencesvalues
-    //   };
-    // },
     computed: {
         ...mapGetters({
             courseCode: "course/getCourseCode",
