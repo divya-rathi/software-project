@@ -6,7 +6,10 @@
         <div class="media">
           <div class="media-left is-hidden-mobile">
             <figure class="image">
-              <img src="https://bulma.io/images/placeholders/600x480.png" alt="Placeholder image" />
+              <img
+                src="https://bulma.io/images/placeholders/600x480.png"
+                alt="Placeholder image"
+              />
             </figure>
           </div>
           <div class="media-content is-size-4 is-family-monospace inpad totext">
@@ -56,11 +59,16 @@
 
 <script>
 import { ParticlesBg } from "particles-bg-vue";
-import { fireDb } from "@/services/firebase";
-import { mapState } from "vuex";
+// import { fireDb } from "@/services/firebase";
+import { mapGetters } from "vuex";
 export default {
   components: {
     ParticlesBg
+  },
+  computed: {
+    ...mapGetters({
+      userDetails: "users/getUserDetails"
+    })
   },
   data() {
     return {
@@ -72,18 +80,18 @@ export default {
   },
   methods: {},
   async created() {
-    let user = this.$store.state.users.user;
-    let userDetails = await fireDb
-      .collection("users")
-      .doc(user.uid)
-      .get();
+    let uid = this.$store.state.users.uid;
+    // let userDetails = await fireDb
+    //   .collection("users")
+    //   .doc(uid)
+    //   .get();
 
-    userDetails = userDetails.data();
-    console.log(userDetails);
-    this.name = userDetails["name"];
-    this.email = userDetails["email"];
-    this.rollno = userDetails["registrationNumber"];
-    this.phoneno = userDetails["phoneNumber"];
+    // userDetails = userDetails.data();
+    // console.log(userDetails);
+    this.name = this.userDetails["name"];
+    this.email = this.userDetails["email"];
+    this.rollno = this.userDetails["registrationNumber"];
+    this.phoneno = this.userDetails["phoneNumber"];
   }
 };
 </script>

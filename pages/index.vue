@@ -1,7 +1,11 @@
 <template>
   <div class="tot">
     <hooper :settings="hooperSettings">
-      <slide class="has-text-centered" v-for="(code,index) in courseCodeList" :key="index">
+      <slide
+        class="has-text-centered"
+        v-for="(code, index) in courseCodeList"
+        :key="index"
+      >
         <div class="card">
           <div class="card-image">
             <figure class="image">
@@ -11,10 +15,12 @@
           <div class="card-content">
             <div class="media">
               <div class="media-content">
-                <p class="title is-4 has-text-centered is-family-primary">{{code}}</p>
-                <p
-                  class="subtitle has-text-centered is-family-primary is-5"
-                >{{courseNameList[index]}}</p>
+                <p class="title is-4 has-text-centered is-family-primary">
+                  {{ code }}
+                </p>
+                <p class="subtitle has-text-centered is-family-primary is-5">
+                  {{ courseNameList[index] }}
+                </p>
               </div>
             </div>
             <!-- <div class="content">
@@ -22,10 +28,11 @@
                         Phasellus nec iaculis mauris.
             </div>-->
             <router-link
-              :to="{name:'course'}"
+              :to="{ name: 'course' }"
               class="button is-family-sans-serif"
               @click.native="setcourseCode(code)"
-            >Goto Course</router-link>
+              >Goto Course</router-link
+            >
           </div>
         </div>
       </slide>
@@ -47,10 +54,11 @@
 <script>
 import { Hooper, Slide, Navigation as HooperNavigation } from "hooper";
 import Accordion from "~/components/Accordion";
+import { mapGetters } from "vuex";
 
 import "hooper/dist/hooper.css";
 import { fireDb } from "@/services/firebase";
-import jdenticon from "jdenticon";
+// import jdenticon from "jdenticon";
 export default {
   components: {
     Hooper,
@@ -95,21 +103,30 @@ export default {
   methods: {
     setcourseCode(courseCode) {
       this.$store.dispatch("course/search", courseCode);
-      console.log("hello");
     }
   },
   async mounted() {
-    // what to do to connect to db??
-    let querySnapshot = await fireDb.collection("courses").get();
+    // // what to do to connect to db??
+    // let querySnapshot = await fireDb.collection("courses").get();
 
-    await querySnapshot.forEach(doc => {
-      this.courseIconList.push(jdenticon.toSvg(doc.data().courseName, 200));
-      this.courseCodeList.push(doc.id);
-      this.courseNameList.push(doc.data().courseName);
-    });
+    // await querySnapshot.forEach(doc => {
+    //   this.courseIconList.push(jdenticon.toSvg(doc.data().courseName, 200));
+    //   this.courseCodeList.push(doc.id);
+    //   this.courseNameList.push(doc.data().courseName);
+    // });
 
-    console.log(this.courseCodeList);
-    console.log(this.courseNameList);
+    // console.log(this.courseCodeList);
+    // console.log(this.courseNameList);
+
+    this.$store.dispatch("course/fetchCourseList");
+    this.courseCodeList = this.courseList["courseCodeList"];
+    this.courseNameList = this.courseList["courseNameList"];
+    this.courseIconList = this.courseList["courseIconList"];
+  },
+  computed: {
+    ...mapGetters({
+      courseList: "course/getCourseList"
+    })
   }
 };
 </script>
