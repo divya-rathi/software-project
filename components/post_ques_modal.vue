@@ -7,7 +7,7 @@
                 <form action method="post" @submit.prevent="postQues">
                     <div class="field">
                         <div class="control">
-                            <textarea type="password" cols="60" v-modal="question" class="input is-shadowless textarea" placeholder="Type your question here!" required />
+                            <textarea type="password" cols="60" v-modal="question" class="input is-shadowless textarea is-family-secondary" placeholder="Type your question here!" required />
                             </div>
                     </div>
 
@@ -33,6 +33,15 @@
 </template>
 
 <style lang="scss" scoped>
+::placeholder {
+    color: #ee8972;
+}
+
+textarea {
+    border-color: black;
+    color: black;
+}
+
 .card {
     padding: 2rem;
     border-radius: 1rem;
