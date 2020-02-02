@@ -3,11 +3,11 @@
     <div class="modal-backdrop">
         <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
             <div class="card">
-                <p class="title is-size-3 is-family-secondary"> Post your question here!!</p>
+                <p class="title is-size-3 is-family-secondary has-text-centered"> Post your question here!!</p>
                 <form action method="post" @submit.prevent="postQues">
                     <div class="field">
                         <div class="control">
-                            <textarea type="password" cols="50" class="input is-shadowless textarea" placeholder="Type your question here!" required />
+                            <textarea type="password" cols="60" class="input is-shadowless textarea" placeholder="Type your question here!" required />
                             </div>
                     </div>
 

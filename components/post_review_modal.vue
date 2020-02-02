@@ -8,7 +8,7 @@
                     <star-rating v-model="rating" show-rating="false" star-size=40 inactive-color="black" glow=2></star-rating>
                 </div>
                 <br>
-                <form action method="post" @submit.prevent="login">
+                <form action method="post" @submit.prevent="postReview">
                     <div class="field ">
                         <div class="control">
                             <textarea type="text" cols="50" class="input is-shadowless textarea is-type-3 is-family-secondary" v-model="review" placeholder="Tell us some more about the course.." required />
