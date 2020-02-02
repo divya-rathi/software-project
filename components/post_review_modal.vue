@@ -40,17 +40,13 @@
 </template>
 
 <style lang="scss" scoped>
-
-.stars
-{
+.stars {
     width: 100%;
-    background-color: red;
     padding-left: 15vw;
     padding-right: 15vw;
 }
 
-::placeholder
-{
+::placeholder {
     color: #ee8972;
 }
 
