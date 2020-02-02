@@ -4,12 +4,14 @@
         <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
             <div class="card">
                 <div class="is-size-3  is-family-secondary ">Rate the course..</div>
-                <star-rating v-model="rating" show-rating="false" star-size=40 inactive-color="black" glow=2></star-rating>
+                <div class="stars">
+                    <star-rating v-model="rating" show-rating="false" star-size=40 inactive-color="black" glow=2></star-rating>
+                </div>
                 <br>
                 <form action method="post" @submit.prevent="login">
                     <div class="field ">
                         <div class="control">
-                            <textarea type="text" class="input is-shadowless textarea is-type-3 is-family-secondary" v-model="review" placeholder="Tell us some more about the course.." required />
+                            <textarea type="text" cols="50" class="input is-shadowless textarea is-type-3 is-family-secondary" v-model="review" placeholder="Tell us some more about the course.." required />
                             </div>
                     </div>
 
@@ -39,8 +41,20 @@
 
 <style lang="scss" scoped>
 
-textarea
+.stars
 {
+    width: 100%;
+    background-color: red;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+::placeholder
+{
+    color: #ee8972;
+}
+
+textarea {
     border-color: black;
     color: black;
 }

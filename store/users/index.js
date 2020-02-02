@@ -1,5 +1,5 @@
-import { auth } from "@/services/firebase";
-import Cookie from "js-cookie";
+import { auth, fireDb } from "@/services/firebase";
+// import Cookie from "js-cookie";
 
 export const store = () => ({
   uid: null,
@@ -18,33 +18,53 @@ export const mutations = {
 export const getters = {
   isUserLoggedIn(state) {
     return state.uid != null;
+  },
+  getUserDetails(state) {
+    return state.userDetails;
   }
 };
 
 export const actions = {
-  async login({ commit }, account) {
-    try {
-      await auth.signInWithEmailAndPassword(account.email, account.password);
+  async login({ commit, state }, account) {
+    if (state.uid == null) {
+      try {
+        await auth.signInWithEmailAndPassword(account.email, account.password);
 
-      const token = await auth.currentUser.getIdToken();
+        // const token = await auth.currentUser.getIdToken();
 
-      Cookie.set("access_token", token);
+        // Cookie.set("access_token", token);
 
-      const userDetails = auth.currentUser;
+        const { uid } = auth.currentUser;
 
-      await commit("SET_UID", userDetails.uid);
+        fireDb
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then(function(doc) {
+            let userDetails = doc.data();
 
-      await commit("SET_USER_DETAILS", userDetails);
+            commit("SET_USER_DETAILS", {
+              email: userDetails.email,
+              gender: userDetails.gender,
+              name: userDetails.name,
+              phoneNumber: userDetails.phoneNumber,
+              registrationNumber: userDetails.registrationNumber,
+              userType: userDetails.userType
+            });
+          });
 
-      console.log("Successfully logged in!");
-    } catch (err) {
-      throw err;
+        commit("SET_UID", uid);
+
+        console.log("Successfully logged in!");
+      } catch (err) {
+        throw err;
+      }
     }
   },
   async logout({ commit }) {
     await auth.signOut();
-    await commit("SET_UID", null);
-    await commit("SET_USER_DETAILS", null);
+    commit("SET_UID", null);
+    commit("SET_USER_DETAILS", null);
     this.$router.push({ path: "/" });
     console.log("Successfully logged out!");
   }

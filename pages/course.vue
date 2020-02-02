@@ -99,14 +99,6 @@ export default {
             isStudent: true
         };
     },
-
-    methods: {
-        setquestions() {
-            this.q = courseDetails.courseDescription.qusetions.questions,
-                this.a = courseDetails.courseDescription.qusetions.answers
-        }
-    },
-
     computed: {
         ...mapGetters({
             courseCode: "course/getCourseCode",

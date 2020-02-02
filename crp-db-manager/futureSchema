@@ -54,9 +54,9 @@ type Question {
 	questionId: ID!
 	courseId: ID!
 	rollNumber: ID!
-	FacultyId: ID
+	facultyId: ID
 	question: String!
-	Answer: String
+	answer: String
 }
 
 type Comment {
