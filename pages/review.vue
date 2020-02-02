@@ -35,8 +35,13 @@
             </a>
         </div>
         <div class="control has-text-centered pad">
-            <button type="submit" class="button is-dark is-medium is-family-monospace"><nuxt-link to="q&a">Q&A</nuxt-link></button>
-            <button type="submit" class="button is-dark is-medium is-family-monospace" v-on:click="showModal">Post Review</button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace">
+                <nuxt-link to="q&a">Q&A</nuxt-link>
+            </button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace" v-if="isStudent" v-on:click="showModal">Post Review</button>
+            <button type="submit" class="button is-dark is-medium is-family-monospace" v-if="!isStudent">
+                <nuxt-link to="/course">Go Home</nuxt-link>
+            </button>
         </div>
         <modal v-show="isModalVisible" @close="closeModal" />
     </div>

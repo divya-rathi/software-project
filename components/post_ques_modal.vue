@@ -7,7 +7,7 @@
                 <form action method="post" @submit.prevent="postQues">
                     <div class="field">
                         <div class="control">
-                            <textarea type="password" cols="60" class="input is-shadowless textarea" placeholder="Type your question here!" required />
+                            <textarea type="password" cols="60" v-modal="question" class="input is-shadowless textarea" placeholder="Type your question here!" required />
                             </div>
                     </div>
 
@@ -19,8 +19,11 @@
 
             <footer class="modal-footer">
                 <slot name="footer">
-                    <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
+                    <!-- <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
                         Close me!
+                    </button> -->
+                    <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
+                        <nuxt-link to="/Q&A">Close me!</nuxt-link>
                     </button>
                 </slot>
             </footer>
@@ -48,7 +51,8 @@
 }
 
 .modal {
-    background:rgba(255,255,255,0.7);;
+    background: rgba(255, 255, 255, 0.7);
+    ;
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
     display: flex;
@@ -96,6 +100,11 @@
 <script>
 export default {
     name: 'modal',
+    data() {
+        return {
+            question: "",
+        }
+    },
     methods: {
         close() {
             this.$emit('close');

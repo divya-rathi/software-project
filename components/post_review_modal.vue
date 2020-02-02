@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="is-size-3  is-family-secondary ">Rate the course..</div>
                 <div class="stars">
-                    <star-rating v-model="rating" show-rating="false" star-size=40 inactive-color="black" glow=2></star-rating>
+                    <!-- <star-rating v-model="rating" show-rating="false" star-size=40 inactive-color="black" glow=2></star-rating> -->
                 </div>
                 <br>
                 <form action method="post" @submit.prevent="postReview">
@@ -29,9 +29,12 @@
 
                 <footer class="modal-footer">
                     <slot name="footer">
-                        <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
+                        <!-- <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
                             Close me!
-                        </button>
+                        </button> -->
+                    <button class=" button btn-green is-medium" @click="close" aria-label="Close modal">
+                        <nuxt-link to="/review">Close me!</nuxt-link>
+                    </button>
                     </slot>
                 </footer>
             </div>
