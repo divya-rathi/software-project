@@ -51,10 +51,7 @@ import {
     mapGetters
 } from "vuex";
 import "hooper/dist/hooper.css";
-import {
-    fireDb
-} from "@/services/firebase";
-// import jdenticon from "jdenticon";
+
 export default {
     components: {
         Hooper,

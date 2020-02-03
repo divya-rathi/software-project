@@ -7,7 +7,9 @@ export const state = () => ({
   coursesFetched: false,
   courseCodeList: [],
   courseNameList: [],
-  courseIconList: []
+  courseIconList: [],
+  reviews: {},
+  questions: {}
 });
 
 export const mutations = {
@@ -28,7 +30,23 @@ export const mutations = {
   },
   SET_COURSE_ICON_LIST: (state, courseIconList) => {
     window.$nuxt.$set(state, "courseIconList", courseIconList);
-  }
+  },
+  SET_REVIEW: (state, review) => {
+    window.$nuxt.$set(state.reviews, review.reviewId, review.reviewData);
+  },
+  CLEAR_REVIEWS: (state) => {
+    window.$nuxt.$set(state, "reviews", {});
+  },
+  SET_QUESTION: (state, question) => {
+    window.$nuxt.$set(
+      state.questions,
+      question.questionId,
+      question.questionData
+    );
+  },
+  CLEAR_QUESTIONS: (state) => {
+    window.$nuxt.$set(state, "questions", {});
+  },
 };
 
 export const getters = {
@@ -44,22 +62,57 @@ export const getters = {
       courseNameList: state.courseNameList,
       courseIconList: state.courseIconList
     };
+  },
+  getCourseReviews(state) {
+    return state.reviews;
+  },
+  getCourseQuestions(state) {
+    return state.questions;
   }
 };
 
 export const actions = {
-  async search({ commit }, newCourseCode) {
-    const ref = fireDb.collection("courses").doc(newCourseCode);
-    try {
-      let snap = await ref.get();
-      let newCourseDetails = snap.data();
-      await commit("SET_COURSE_CODE", newCourseCode);
-      await commit("SET_COURSE_DETAILS", newCourseDetails);
-    } catch (err) {
-      await commit("SET_COURSE_CODE", null);
-      await commit("SET_COURSE_DETAILS", null);
-      console.log(err);
-    }
+  search({ commit }, newCourseCode) {
+    
+    commit("CLEAR_REVIEWS");
+    commit("CLEAR_QUESTIONS");
+
+    fireDb
+      .collection("courses")
+      .doc(newCourseCode)
+      .get()
+      .then(function(snap) {
+        let newCourseDetails = snap.data();
+        commit("SET_COURSE_CODE", newCourseCode);
+        commit("SET_COURSE_DETAILS", newCourseDetails);
+
+        newCourseDetails["reviews"].forEach(reviewId => {
+          fireDb
+            .collection("reviews")
+            .doc(reviewId)
+            .get()
+            .then(doc => {
+              commit("SET_REVIEW", { reviewId, reviewData: doc.data() });
+              console.log({ reviewId, reviewData: doc.data() });
+            });
+        });
+
+        newCourseDetails["questions"].forEach(questionId => {
+          fireDb
+            .collection("questions")
+            .doc(questionId)
+            .get()
+            .then(doc => {
+              commit("SET_QUESTION", { questionId, questionData: doc.data() });
+              console.log({ questionId, questionData: doc.data() });
+            });
+        });
+      })
+      .catch(function(err) {
+        commit("SET_COURSE_CODE", null);
+        commit("SET_COURSE_DETAILS", null);
+        console.log(err);
+      });
   },
   fetchCourseList({ commit, state }) {
     if (!state.coursesFetched) {
