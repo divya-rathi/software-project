@@ -8,6 +8,10 @@ export const actions = {
       .then(docRef => {
         dispatch("addStudentQuestionRecord", docRef.id);
         dispatch("addCourseQuestionRecord", docRef.id);
+        dispatch("postProcessQuestion", {
+          questionId: docRef.id,
+          questionData
+        });
       });
   },
   addStudentQuestionRecord({ rootState }, questionId) {
@@ -30,12 +34,16 @@ export const actions = {
     fireDb
       .collection("questions")
       .doc(answerData.questionId)
-      .update({
-        answer: answerData.answer,
-        facultyId: answerData.facultyId
-      })
+      .set(
+        {
+          answer: answerData.answer,
+          facultyId: answerData.facultyId
+        },
+        { merge: true }
+      )
       .then(() => {
-        dispatch("addFacultyQuestionRecord", anserData.questionId);
+        dispatch("addFacultyQuestionRecord", answerData.questionId);
+        dispatch("postProcessAnswer", answerData);
       });
   },
   addFacultyQuestionRecord({ rootState }, questionId) {
@@ -45,5 +53,11 @@ export const actions = {
       .update({
         questions: fireVal.FieldValue.arrayUnion(questionId)
       });
+  },
+  postProcessQuestion({ commit }, question) {
+    commit("course/SET_QUESTION", question, { root: true });
+  },
+  postProcessAnswer({ commit }, answerData) {
+    
   }
 };

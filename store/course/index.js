@@ -34,7 +34,7 @@ export const mutations = {
   SET_REVIEW: (state, review) => {
     window.$nuxt.$set(state.reviews, review.reviewId, review.reviewData);
   },
-  CLEAR_REVIEWS: (state) => {
+  CLEAR_REVIEWS: state => {
     window.$nuxt.$set(state, "reviews", {});
   },
   SET_QUESTION: (state, question) => {
@@ -44,9 +44,9 @@ export const mutations = {
       question.questionData
     );
   },
-  CLEAR_QUESTIONS: (state) => {
+  CLEAR_QUESTIONS: state => {
     window.$nuxt.$set(state, "questions", {});
-  },
+  }
 };
 
 export const getters = {
@@ -73,7 +73,6 @@ export const getters = {
 
 export const actions = {
   search({ commit }, newCourseCode) {
-    
     commit("CLEAR_REVIEWS");
     commit("CLEAR_QUESTIONS");
 
