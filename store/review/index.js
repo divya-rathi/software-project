@@ -1,23 +1,43 @@
-import { fireDb } from "@/services/firebase";
+import { fireDb, fireVal } from "@/services/firebase";
 
 export const actions = {
-  postReview({ state, dispatch }, reviewData) {
+  postReview({ dispatch }, reviewData) {
+    let reviewId = `${reviewData.courseCode}_${reviewData.rollNumber}`;
     fireDb
       .collection("reviews")
-      .add(reviewData)
-      .then(function(docRef) {
-          dispatch("review/addStudentReviewRecord", docRef.id);
-          dispatch("review/addCourseReviewRecord", docRef.id);
-        });
+      .doc(reviewId)
+      .set(reviewData, { merge: true })
+      .then(() => {
+        dispatch("addStudentReviewRecord", reviewId);
+        dispatch("addCourseReviewRecord", reviewId);
+        dispatch("reviewPostProcess", reviewData);
+        console.log(reviewId);
+      });
   },
-  addStudentReviewRecord(reviewId) {
-    fireDb.collection("students").doc(state.users.uid).update({
-        reviews: fireDb.FieldValue.arrayUnion(reviewId)
-    })
+  addStudentReviewRecord({ rootState }, reviewId) {
+    fireDb
+      .collection("students")
+      .doc(rootState.users.uid)
+      .update({
+        reviews: fireVal.FieldValue.arrayUnion(reviewId)
+      })
+      .then(() => {
+        console.log("added Review in Students Record");
+      });
   },
-  addCourseReviewRecord(reviewId) {
-    fireDb.collection("courses").doc(state.course.courseCode).update({
-        reviews: fireDb.FieldValue.arrayUnion(reviewId)
-    })
+  addCourseReviewRecord({ rootState }, reviewId) {
+    fireDb
+      .collection("courses")
+      .doc(rootState.course.courseCode)
+      .update({
+        reviews: fireVal.FieldValue.arrayUnion(reviewId)
+      })
+      .then(() => {
+        console.log("added Review in Courses Record");
+      });
+  },
+  reviewPostProcess({ commit }, reviewData) {
+    let reviewId = `${reviewData.courseCode}_${reviewData.rollNumber}`;
+    commit("course/SET_REVIEW", { reviewId, reviewData }, { root: true });
   }
 };
