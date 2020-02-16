@@ -15,11 +15,14 @@ describe("Login", () => {
   });
 
   test("Check username", () => {
+    const expectedArg = "Please enter both username and password";
+    const component = factory();
+    window.alert = jest.fn();
+    //component.setState(state)
+    //component.find('form').simulate('submit')
     wrapper.find("input[type=email]").setValue("divya");
-
-    //   wrapper.find("button").trigger("submit.prevent");
-    expect(wrapper.vm.$data.account.email).toBe("divya");
-    //   name = Login.this.email;
-    //   expect("").toBe(name);
+    wrapper.find("button").trigger("submit.prevent");
+    expect(window.alert).toHaveBeenCalledWith(expectedArg);  
+    //expect(wrapper.vm.$data.account.email).toBe("divya");
   });
 });
