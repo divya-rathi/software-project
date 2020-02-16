@@ -7,7 +7,7 @@
         <form action method="post" @submit.prevent="login">
             <div class="field">
                 <div class="control">
-                    <input type="email" class="input has-text-centered" name="email" v-model="account.email" placeholder="Tell us your email address.." required />
+                    <input type="email" class="input has-text-centered" name="email" v-model="account.email" placeholder="Tell us your email address.." required data-username/>
                 </div>
             </div>
 
