@@ -16,8 +16,8 @@ describe("Logo", () => {
     expect(wrapper.contains('button')).toBe(true);
 
   })
-  test("Has a emain",() =>{ 
-    expect(wrapper.html()).toContain('<input type=email/>');
+  test("Has a email",() =>{ 
+    expect(wrapper.html()).toContain('<input type="email"/>');
 
   })
 });
