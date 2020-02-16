@@ -101,7 +101,7 @@ export default {
     };
   },
   methods: {
-    async login() {
+    login() {
       if (this.account.email.localeCompare("") && this.account.password.localeCompare("")) {
         this.$store
           .dispatch("users/login", this.account)
