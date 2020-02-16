@@ -21,6 +21,8 @@ describe("Login", () => {
   {
       wrapper.find("input[type=email]").setValue("divya");
 
+  
+
     //   wrapper.find("button").trigger("submit.prevent");
       expect(wrapper.vm.$data.account.email).toBe("divya");
     //   name = Login.this.email;
