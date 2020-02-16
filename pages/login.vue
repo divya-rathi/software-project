@@ -6,6 +6,7 @@
         Login
       </h1>
 
+<<<<<<< HEAD
       <form action method="post" @submit.prevent="login">
         <div class="field">
           <div class="control">
@@ -19,6 +20,14 @@
             />
           </div>
         </div>
+=======
+        <form action method="post" @submit.prevent="login">
+            <div class="field">
+                <div class="control">
+                    <input type="email" class="input has-text-centered" name="email" v-model="account.email" placeholder="Tell us your email address.." required data-username/>
+                </div>
+            </div>
+>>>>>>> 55503ddfc31e5f395f9de58d88d4c3b83c7bb787
 
         <div class="field">
           <div class="control">

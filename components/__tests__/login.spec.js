@@ -1,11 +1,11 @@
 import { shallowMount } from "@vue/test-utils";
-import Logo from "../../pages/login.vue";
+import Login from "../../pages/login.vue";
 
 const factory = () => {
-  return shallowMount(Logo, {});
+  return shallowMount(Login, {});
 };
 
-describe("Logo", () => {
+describe("Login", () => {
   const wrapper = factory();
   test("mounts properly", () => {
     expect(wrapper.isVueInstance()).toBeTruthy();
@@ -13,7 +13,13 @@ describe("Logo", () => {
   test("Has a button", () => {
     expect(wrapper.contains("button")).toBe(true);
   });
-  test("Has a email", () => {
-    expect(wrapper.contains("input[type=email]")).toBe(true);
+
+  test("Check username", () => {
+    wrapper.find("input[type=email]").setValue("divya");
+
+    //   wrapper.find("button").trigger("submit.prevent");
+    expect(wrapper.vm.$data.account.email).toBe("divya");
+    //   name = Login.this.email;
+    //   expect("").toBe(name);
   });
 });
