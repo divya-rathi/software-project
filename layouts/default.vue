@@ -99,8 +99,11 @@ export default {
     userLoggedIn: "users/isUserLoggedIn"
   }),
   mounted() {
-    let userObject = window.$nuxt.$store.state.users
-    if (Object.entries(userObject).length === 0 && userObject.constructor === Object) {
+    let userObject = window.$nuxt.$store.state.users;
+    if (
+      Object.entries(userObject).length === 0 &&
+      userObject.constructor === Object
+    ) {
       window.$nuxt.$store.commit("users/SET_UID", null);
       window.$nuxt.$store.commit("users/SET_USER_DETAILS", null);
       window.$nuxt.$store.commit("users/SET_USER_LOGGEDIN", false);
