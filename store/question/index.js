@@ -3,16 +3,17 @@ import { fireDb, fireVal } from "@/services/firebase";
 export const actions = {
   postQuestion({ dispatch }, questionData) {
     fireDb
-      .collection("reviews")
+      .collection("questions")
       .add(questionData)
       .then(docRef => {
         dispatch("addStudentQuestionRecord", docRef.id);
         dispatch("addCourseQuestionRecord", docRef.id);
         dispatch("postProcessQuestion", {
           questionId: docRef.id,
-          questionData
+          questionData: questionData
         });
-      });
+      })
+      .catch(err => console.log(err));
   },
   addStudentQuestionRecord({ rootState }, questionId) {
     fireDb
@@ -57,7 +58,5 @@ export const actions = {
   postProcessQuestion({ commit }, question) {
     commit("course/SET_QUESTION", question, { root: true });
   },
-  postProcessAnswer({ commit }, answerData) {
-    
-  }
+  postProcessAnswer({ commit }, answerData) {}
 };

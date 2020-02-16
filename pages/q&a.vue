@@ -13,42 +13,18 @@
             answer="Any one who paid fee can register this course."
           />
         </a>
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio saepe
-          corporis nulla, incidunt officia quae aliquid laboriosam, similique
-          labore modi nihil repellendus aperiam. Ducimus aperiam quidem, cum
-          libero voluptas sint.
-        </a>
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-          provident quis officia numquam? Itaque laudantium vitae ut, velit
-          nobis culpa. Magnam sequi laborum ab quos mollitia corporis voluptate
-          alias nesciunt.
-        </a>
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-          doloremque quisquam obcaecati voluptatibus dolorum laboriosam eveniet
-          quaerat maiores similique. Nihil fuga animi esse velit vel corporis
-          atque nisi quasi. Voluptatibus.
-        </a>
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-          voluptas, ipsum, veritatis sint debitis cumque at voluptates id
-          deserunt nisi illo temporibus sed eum in fugiat obcaecati asperiores
-          consequatur illum?
-        </a>
+        <div v-for="(val, key) in questions" :key="key">
+          <a class="panel-block">
+            <span class="panel-icon">
+              <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            <Accordion
+              class="accordion has-text-centered"
+              :question="key"
+              :answer="val"
+            />
+          </a>
+        </div>
       </div>
       <div class="control has-text-centered pad">
         <button
@@ -131,8 +107,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      questions: "course/getQuestions"
-    })
+      getQuestions: "course/getCourseQuestions"
+    }),
+    questions() {
+      let questionData = {};
+      Object.values(this.getQuestions).forEach(element => {
+        questionData[element["question"]] = element["answer"];
+      });
+      return questionData;
+    }
   }
 };
 </script>
