@@ -20,7 +20,6 @@
           </div>
         </div>
 
-
         <div class="field">
           <div class="control">
             <input
@@ -102,10 +101,14 @@ export default {
   },
   methods: {
     login() {
-      if (this.account.email.localeCompare("") && this.account.password.localeCompare("")) {
+      if (
+        this.account.email.localeCompare("") &&
+        this.account.password.localeCompare("")
+      ) {
         this.$store
           .dispatch("users/login", this.account)
           .then(() => {
+            console.log("Routing to Home Page");
             this.$router.push({
               path: "/"
             });
