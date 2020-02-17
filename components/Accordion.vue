@@ -16,7 +16,7 @@
       <div
         v-on:click="showModal"
         class="message-content is-size-5 is-family-monospace"
-        v-if="userType == 'FACULTY' || userType == 'MENTOR'"
+        v-if="userType == 'TEACHER' || userType == 'MENTOR'"
       >
         Wow...such empty!!
         <a href="#" v-on:click="showModal">Answer</a>
