@@ -20,13 +20,10 @@
         </div>
         <div class="control has-text-centered pad">
             <button type="submit" class="button is-dark is-medium is-family-monospace">
-                <nuxt-link to="/review">Review</nuxt-link>
+                <nuxt-link to="/course">Go Back</nuxt-link>
             </button>
             <button type="submit" class="button is-dark is-medium is-family-monospace" v-if="isStudent" v-on:click="showModal">
                 Post Question
-            </button>
-            <button type="submit" class="button is-dark is-medium is-family-monospace" v-if="!isStudent">
-                <nuxt-link to="/course">Go Home</nuxt-link>
             </button>
         </div>
     </div>
