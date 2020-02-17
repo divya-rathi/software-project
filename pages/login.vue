@@ -16,7 +16,6 @@
               v-model="account.email"
               id ="email"
               placeholder="Tell us your email address.."
-              id="email"
               required
             />
           </div>
