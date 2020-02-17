@@ -46,7 +46,7 @@
                   type="text"
                   placeholder="course code"
                   v-model="courseCode"
-                  id="search"
+                  id="searchbar"
                 />
               </p>
               <p class="control">
