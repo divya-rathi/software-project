@@ -13,16 +13,18 @@
             answer="Any one who paid fee can register this course."
           />
         </a>
-        <div v-for="(val, key) in questions" :key="key">
+        <div v-for="(val, key) in getQuestions" :key="key">
           <a class="panel-block">
             <span class="panel-icon">
               <i class="fas fa-book" aria-hidden="true"></i>
             </span>
             <Accordion
               class="accordion has-text-centered"
-              :question="key"
-              :answer="val"
+              :question="val.question"
+              :answer="val.answer"
+              :questionId="key"
             />
+            <button v-on:click="setQuestionId(key)">Answer</button>
           </a>
         </div>
       </div>
@@ -94,7 +96,8 @@ export default {
       time: 0,
       duration: 5000,
       isStudent: true,
-      isModalVisible: false
+      isModalVisible: false,
+      questionId: ""
     };
   },
   methods: {
@@ -103,6 +106,10 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    setQuestionId: function(qid) {
+      this.questionId = qid;
+      console.log(this.questionId);
     }
   },
   computed: {

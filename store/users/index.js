@@ -39,6 +39,8 @@ export const getters = {
 
 export const actions = {
   async login({ commit, state }, account) {
+    if (process.server) return;
+
     if (state.loggedIn == false) {
       try {
         await auth.signInWithEmailAndPassword(account.email, account.password);
@@ -74,8 +76,8 @@ export const actions = {
       }
     }
   },
-  async logout({ commit }) {
-    await auth.signOut();
+  logout({ commit }) {
+    auth.signOut();
     commit("SET_UID", null);
     commit("SET_USER_DETAILS", null);
     commit("SET_USER_LOGGEDIN", false);
