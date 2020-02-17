@@ -15,6 +15,7 @@
               name="email"
               v-model="account.email"
               placeholder="Tell us your email address.."
+              id="email"
               required
             />
           </div>
@@ -27,6 +28,7 @@
               class="input has-text-centered"
               v-model="account.password"
               placeholder="Password here!"
+              id="pass"
               required
             />
           </div>
