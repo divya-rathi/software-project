@@ -26,7 +26,7 @@
               <div class="media-left">🎯 Courses:</div>
               <div class="media-content">MBA, CSE, EEE, COA</div>
             </div> -->
-                    <div class="media inpad">Some buttons here if necessary!</div>
+                    <!-- <div class="media inpad">Some buttons here if necessary!</div> -->
                 </div>
             </div>
         </div>
