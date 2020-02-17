@@ -58,5 +58,11 @@ export const actions = {
   postProcessQuestion({ commit }, question) {
     commit("course/SET_QUESTION", question, { root: true });
   },
-  postProcessAnswer({ commit }, answerData) {}
+  postProcessAnswer({ rootState, commit }, answerData) {
+    let questionData = JSON.parse(JSON.stringify((rootState.course.questions[answerData.questionId])));
+    console.log(questionData);
+    questionData["answer"] = answerData.answer;
+    questionData["facultyId"] = answerData.facultyId;
+    commit("course/SET_QUESTION", questionData, { root: true });
+  }
 };

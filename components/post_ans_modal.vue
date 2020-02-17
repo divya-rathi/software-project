@@ -17,7 +17,7 @@
                 <textarea
                   type="password"
                   cols="60"
-                  v-model="question"
+                  v-model="answer"
                   class="input is-shadowless textarea is-family-secondary"
                   placeholder="Type your answer here!"
                   required
@@ -54,10 +54,9 @@
 </template>
 
 <style lang="scss" scoped>
-.modal-backdrop
-{
-    position: absolute;
-    z-index: 5000;
+.modal-backdrop {
+  position: absolute;
+  z-index: 5000;
 }
 
 ::placeholder {
@@ -137,18 +136,32 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "modal",
+  props: ["questionId"],
   data() {
     return {
-      question: ""
+      answer: ""
     };
   },
   methods: {
     close() {
       this.$emit("close");
     },
+    submit() {
+      let answerData = {
+        questionId: this.questionId,
+        answer: this.answer,
+        facultyId: this.userRollNumber
+      };
+      this.$store.dispatch("question/postAnswer", answerData);
+      this.$emit("close");
+      this.answer = "";
+    }
   },
   computed: {
-
+    ...mapGetters({
+      courseCode: "course/getCourseCode",
+      userRollNumber: "users/getUserRollNumber"
+    })
   }
 };
 </script>

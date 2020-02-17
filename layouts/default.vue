@@ -34,7 +34,7 @@
                             <input class="input" type="text" placeholder="course code" v-model="courseCode" id="searchbar" />
                         </p>
                         <p class="control">
-                            <button class="button is-info" @click="search">Search</button>
+                            <button class="button is-info" @click="search" id="searchbutton" name="searchbutton">Search</button>
                         </p>
                     </div>
                 </div>
