@@ -25,13 +25,14 @@
         </slide>
         <hooper-navigation slot="hooper-addons"></hooper-navigation>
     </hooper>
+    <div class="title is-size-3 is-family-secondary has-text-centered">Made with ❤️ by Teja & GAD</div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .hooper {
     height: auto;
-    margin-top: 10vh;
+    margin-top: 3vh;
 }
 
 .card {
