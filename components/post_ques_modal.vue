@@ -152,8 +152,8 @@ export default {
         rollNumber: this.userRollNumber
       };
       this.$store.dispatch("question/postQuestion", questionData);
-      this.question = "";
       this.$emit("close");
+      this.question = "";
     }
   },
   computed: {
