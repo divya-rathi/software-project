@@ -44,7 +44,7 @@ describe("Login", () => {
     //expect(wrapper.find("input[type=password]").attributes).toEqual("password");
   });
 
-  test('Check for Email-id field', () => {
+  test('Check for EmailId field', () => {
     expect(wrapper.contains("input[type=email]")).toBeTruthy();
   });
 
