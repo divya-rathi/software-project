@@ -4,10 +4,7 @@
       <h1 class="title is-family-secondary is-size-1">Reviews</h1>
       <div class="panel">
         <div v-for="(key, val) in reviews" :key="key">
-          <a class="panel-block">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
+          <a class="panel-block is-size-5 is-family-secondary">
             {{ val }} : {{ key.reviewText }}
           </a>
         </div>
@@ -34,6 +31,11 @@
 </template>
 
 <style lang="scss" scoped>
+.panel
+{
+    min-width: 80vw;
+}
+
 .button {
   color: white;
   min-width: 10vw;
