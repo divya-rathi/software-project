@@ -32,7 +32,7 @@
           </div>
           <div class="navbar-item is-info">
             <nuxt-link to="/account" v-if="userLoggedIn">
-              <strong>Account</strong>
+              <strong class="has-text-grey">Account</strong>
             </nuxt-link>
           </div>
         </div>
