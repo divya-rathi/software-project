@@ -3,16 +3,6 @@
     <div class="container has-text-centered">
       <h1 class="title is-family-secondary is-size-1">Reviews</h1>
       <div class="panel">
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          <Accordion
-            class="accordion has-text-centered"
-            question="Who can register?"
-            answer="Any one who paid fee can register this course."
-          />
-        </a>
         <div v-for="(key, val) in reviews" :key="key">
           <a class="panel-block">
             <span class="panel-icon">
