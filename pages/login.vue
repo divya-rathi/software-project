@@ -39,6 +39,8 @@
             type="submit"
             class="button is-dark is-rounded is-outlined is-medium is-family-primary"
             v-on:click="login"
+            id="login"
+            name="login"
           >
             Log In
           </button>
