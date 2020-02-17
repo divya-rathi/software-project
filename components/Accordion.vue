@@ -4,11 +4,20 @@
         {{ question }}
         <button class="delete is-medium" aria-label="delete"></button>
     </div>
-    <div class="message-body">
+    <div class="message-body" v-if="answer">
         <div class="message-content is-size-5 is-family-monospace">
             {{ answer }}
         </div>
     </div>
+    <div class="message-body" v-else>
+        <div v-on:click="showModal" class="message-content is-size-5 is-family-monospace">
+            Wow...It's blank here!!
+            <a href="#" v-on:click="showModal">Answer Me!!</a>
+        </div>
+        <modal v-show="isModalVisible" @close="closeModal" />
+
+    </div>
+
 </article>
 </template>
 
@@ -59,15 +68,27 @@
 </style>
 
 <script>
+import modal from "~/components/post_ans_modal.vue";
+
 export default {
+    components: {
+        modal
+    },
     name: 'Accordion',
-    props: ['question', 'answer'],
+    props: ['question', 'answer', 'questionId'],
     data: function () {
         return {
-            isOpen: false
+            isOpen: false,
+            isModalVisible: false,
         }
     },
     methods: {
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
+        },
         toggleAccordion: function () {
             this.isOpen = !this.isOpen;
         }
