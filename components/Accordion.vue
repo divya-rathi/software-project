@@ -15,7 +15,6 @@
             <a href="#" v-on:click="showModal">Answer Me!!</a>
         </div>
         <modal v-show="isModalVisible" @close="closeModal" />
-
     </div>
 
 </article>
@@ -23,7 +22,7 @@
 
 <style lang="scss" scoped>
 .message {
-    width: 90vw;
+    width: 85vw;
 }
 
 .message-header {

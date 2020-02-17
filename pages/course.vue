@@ -5,8 +5,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column card is-hidden-mobile">
-                    <div class="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae reiciendis praesentium alias excepturi mollitia libero quas dicta repudiandae a nemo numquam nobis neque nostrum laborum, laudantium sint vel molestiae sed!</div>
-                    <div class="has-text-centered">Rating comes here</div>
+                    <div class="card-content is-size-3 has-text-centered">{{courseCode}}</div>
+                    <div class="card-content is-size-4 has-text-centered">{{ courseDetails.courseName }}</div>
+                    <div class="has-text-centered is-size-4">Rating: </div>
+                    <div class="ratingClass">
+                        <star-rating v-model="rating" read-only = "true" star-size="40" inactive-color="black" glow="2"></star-rating>
+                    </div>
                 </div>
                 <div class="column is-three-quarters description">
                     <div v-for="(key,val) in courseDetails.courseDescription.units" :key="val" class="content">
@@ -48,6 +52,15 @@
 </template>
 
 <style lang="scss" scoped>
+.ratingClass {
+    margin-left: calc(1rem + 1vw);
+}
+
+.card {
+    max-width: 25vw;
+    max-height: calc(4vh + 25rem);
+}
+
 .button {
     color: white;
     min-width: 10vw;
@@ -92,7 +105,8 @@ export default {
         return {
             rating: 0,
             review: "",
-            isStudent: true
+            isStudent: true,
+            rating: 2
         };
     },
     computed: {
