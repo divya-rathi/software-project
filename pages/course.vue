@@ -174,7 +174,7 @@ export default {
         rateNum += elem.rating[0];
         count += 1;
       });
-      return Math.floor(rateNum / count);
+      return rateNum == 0 ? 0 : Math.floor(rateNum / count);
     }
   }
 };
