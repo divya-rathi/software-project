@@ -61,11 +61,12 @@ describe("Length", () => {
   })
 });
 
-describe("Credentials", () => {
-  const wrapper = factory();
-  test('Valid', () => {
-    wrapper.find("input[type=email]").setValue("cb.en.u4cse20000@cb.students.amrita.edu");
-    wrapper.find("input[type=password]").setValue("chocolate");
-  })
-});
+// describe("Credentials", () => {
+//   const wrapper = factory();
+//   test('Valid', () => {
+//     wrapper.find("input[type=email]").setValue("cb.en.u4cse20000@cb.students.amrita.edu");
+//     wrapper.find("input[type=password]").setValue("chocolate");
+//   })
+// });
+
 
