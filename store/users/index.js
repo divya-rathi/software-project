@@ -27,10 +27,10 @@ export const getters = {
     return state.userDetails;
   },
   getUserRollNumber(state) {
-    return state.userDetails["registrationNumber"];
+    return state.userDetails ? state.userDetails["registrationNumber"] : "XX.XX.NNXXNNN";
   },
   getUserType(state) {
-    return state.userDetails["userType"];
+    return state.userDetails ? state.userDetails["userType"] : "GUEST";
   },
   isUserLoggedIn(state) {
     return state.loggedIn;

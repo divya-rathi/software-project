@@ -149,18 +149,24 @@ export default {
             this.$emit("close");
         },
         postReview() {
-            let reviewData = {
-                courseCode: this.courseCode,
-                reviewText: this.review,
-                rating: {
-                    "0": this.rating
-                },
-                rollNumber: this.userRollNumber
-            };
-            this.$store.dispatch("review/postReview", reviewData);
-            this.rating = 0;
-            this.review = "";
-            this.$emit("close");
+            if (this.rating !== 0 && this.review !== "") {
+                let reviewData = {
+                    courseCode: this.courseCode,
+                    reviewText: this.review,
+                    rating: {
+                        "0": this.rating
+                    },
+                    rollNumber: this.userRollNumber
+                };
+                this.$store.dispatch("review/postReview", reviewData);
+                this.$emit("close");
+                this.rating = 0;
+                this.review = "";
+            }
+            else{
+                alert("Fill both stars and review");
+            }
+
         }
     },
     computed: {
