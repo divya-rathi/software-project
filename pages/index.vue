@@ -31,7 +31,7 @@
 <style lang="scss" scoped>
 .hooper {
     height: auto;
-    margin-top: 3vh;
+    margin-top: 5vh;
 }
 
 .card {
