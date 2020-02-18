@@ -61,11 +61,18 @@ describe("Length", () => {
   })
 });
 
-describe("Credentials", () => {
+/*describe("Credentials", () => {
   const wrapper = factory();
+  const target = "http://localhost:3000/login"
+  window.location.href = target
+  //window.location.reload = jest.fn();
+  //window.location.reload();
   test('Valid', () => {
     wrapper.find("input[type=email]").setValue("cb.en.u4cse20000@cb.students.amrita.edu");
     wrapper.find("input[type=password]").setValue("chocolate");
+    wrapper.find("button").trigger("submit.prevent");
+    expect(window.location.href).toBe("http://localhost/")
+    //expect(wrapper.vm.$data).toEqual('https://pro-deploy-123.netlify.com/')
   })
-});
+});*/
 
