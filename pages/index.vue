@@ -25,7 +25,6 @@
         </slide>
         <hooper-navigation slot="hooper-addons"></hooper-navigation>
     </hooper>
-    <div class="title is-size-3 is-family-secondary has-text-centered">Made with ❤️ by Teja & GAD</div>
 </div>
 </template>
 
