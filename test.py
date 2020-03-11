@@ -4,10 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+import webbrowser
+
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
