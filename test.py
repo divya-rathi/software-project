@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
