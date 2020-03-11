@@ -1,9 +1,9 @@
-import unittest2
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-class test(unittest2.TestCase):
+class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
         self.driver = webdriver.Firefox()
@@ -63,4 +63,4 @@ class test(unittest2.TestCase):
         return True
 if(__name__=="__main__"):
     print("hi.")
-    unittest2.main()
+    unittest.main()
