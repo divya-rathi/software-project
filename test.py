@@ -67,5 +67,5 @@ class test(unittest2.TestCase):
             return False
         return True
 if(__name__=="__main__"):
-    print("hi=")
+    print("hi")
     unittest2.main()
