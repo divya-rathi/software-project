@@ -1,14 +1,17 @@
+import unittest
+import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
-class SearchText(unittest.TestCase):
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+class test(unittest.TestCase):
     def setUp(self):
-            # create a new Firefox session
-            self.driver = webdriver.Firefox()
-            self.driver.implicitly_wait(30)
-            self.driver.maximize_window()
-            # navigate to the application home page
-            self.driver.get("https://pro-deploy-123.netlify.com/login")
+        # create a new Firefox session
+        self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(30)
+        self.driver.maximize_window()
+        # navigate to the application home page
+        self.driver.get("https://pro-deploy-123.netlify.com/login")
     def test_checklogin_box(self):
         print("validation")
         self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
@@ -47,5 +50,23 @@ class SearchText(unittest.TestCase):
     # # check search box exists on Home page
             self.assertTrue(self.is_element_present(By.ID,"login"))
             print("login button")
-if __name__=='main':
-    main()
+
+
+    def tearDown(self):
+        # close the browser window
+        self.driver.quit()
+
+    def is_element_present(self, how, what):
+        """
+        Helper method to confirm the presence of an element on page
+        :params how: By locator type
+        :params what: locator value
+        """
+        try:
+            self.driver.find_element(by=how, value=what)
+        except NoSuchElementException:
+            return False
+        return True
+if(__name__=="__main__"):
+    print("hi")
+    unittest.main()
