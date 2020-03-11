@@ -56,16 +56,11 @@ class test(unittest2.TestCase):
         self.driver.quit()
 
     def is_element_present(self, how, what):
-        """
-        Helper method to confirm the presence of an element on page
-        :params how: By locator type
-        :params what: locator value
-        """
         try:
             self.driver.find_element(by=how, value=what)
         except NoSuchElementException:
             return False
         return True
 if(__name__=="__main__"):
-    print("hi")
+    print("hi")python 
     unittest2.main()
