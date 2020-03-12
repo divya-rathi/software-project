@@ -101,6 +101,7 @@ if(__name__=="__main__"):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     print("hi.")
 <<<<<<< HEAD
     unittest.main()
@@ -127,3 +128,7 @@ if __name__=='main':
     print("h..")
     unittest.main()
 >>>>>>> parent of f7c4f69... test
+=======
+    print("hi..")
+    unittest.main()
+>>>>>>> parent of 74874b4... a
