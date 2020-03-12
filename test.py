@@ -97,6 +97,7 @@ class SearchText(unittest.TestCase):
             return False
         return True
 if(__name__=="__main__"):
+<<<<<<< HEAD
     print("hi.")
 <<<<<<< HEAD
     unittest.main()
@@ -107,3 +108,7 @@ if __name__=='main':
     main()
 >>>>>>> parent of 5da53e3... test
 >>>>>>> parent of 86a826c... ch
+=======
+    print("hi..")
+    unittest.main()
+>>>>>>> parent of e78b983... ttt
