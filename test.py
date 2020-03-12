@@ -12,7 +12,8 @@ import sys
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        binary=FirefoxBinary(sys.executable('firefox.exe'))
+        pythonpath = os.path.dirname(os.path.normpath(sys.executable))
+        binary=FirefoxBinary(sys.executable,'.//firefox.exe')
         cap=DesiredCapabilities.FIREFOX
         cap["marionette"] = False
         self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary)
