@@ -15,7 +15,7 @@ class test(unittest.TestCase):
         sys.executable(binary = FirefoxBinary('.//firefox.exe'))
         cap=DesiredCapabilities.FIREFOX
         cap["marionette"] = False
-        sys.executable(self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary))
+        self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
