@@ -12,7 +12,7 @@ import sys
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        binary=sys.executable(FirefoxBinary('.//firefox.exe'))
+        binary=FirefoxBinary(sys.executable('firefox.exe'))
         cap=DesiredCapabilities.FIREFOX
         cap["marionette"] = False
         self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary)
