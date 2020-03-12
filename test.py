@@ -11,7 +11,7 @@ class test(unittest.TestCase):
         # create a new Firefox session
         cap=DesiredCapabilities.FIREFOX
         cap["marionette"] = False
-        self.driver = webdriver.Firefox(capabilities=cap)
+        self.driver = webdriver.Firefox(capabilities=cap, executable_path=".\\geckodriver.exe")
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
