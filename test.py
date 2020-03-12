@@ -12,10 +12,9 @@ import sys
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        binary=FirefoxBinary('.//firefox.exe')
         cap=DesiredCapabilities.FIREFOX
-        cap["marionette"] = False
-        self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary)
+        # cap["marionette"] = False
+        self.driver = webdriver.Firefox(capabilities=cap)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
