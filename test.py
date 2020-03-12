@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        binary = FirefoxBinary('firefox.exe')
+        binary = FirefoxBinary('.//firefox.exe')
         cap=DesiredCapabilities.FIREFOX
         cap["marionette"] = False
         self.driver = webdriver.Firefox(capabilities=cap, executable_path="geckodriver.exe" , firefox_binary=binary)
