@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 <<<<<<< HEAD
+<<<<<<< HEAD
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 import webbrowser
@@ -22,12 +23,20 @@ class test(unittest.TestCase):
 import unittest
 class SearchText(unittest.TestCase):
     def setUp(self):
+=======
+import unittest
+class SearchText(unittest.TestCase):
+    def setUp(self):
+>>>>>>> parent of 5da53e3... test
             # create a new Firefox session
             self.driver = webdriver.Firefox()
             self.driver.implicitly_wait(30)
             self.driver.maximize_window()
             # navigate to the application home page
             self.driver.get("https://pro-deploy-123.netlify.com/login")
+<<<<<<< HEAD
+>>>>>>> parent of 5da53e3... test
+=======
 >>>>>>> parent of 5da53e3... test
     def test_checklogin_box(self):
         print("validation")
@@ -68,6 +77,7 @@ class SearchText(unittest.TestCase):
             self.assertTrue(self.is_element_present(By.ID,"login"))
             print("login button")
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     def tearDown(self):
@@ -88,6 +98,10 @@ class SearchText(unittest.TestCase):
 if(__name__=="__main__"):
     print("hi.")
     unittest.main()
+=======
+if __name__=='main':
+    main()
+>>>>>>> parent of 5da53e3... test
 =======
 if __name__=='main':
     main()
