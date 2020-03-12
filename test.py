@@ -9,7 +9,9 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class test(unittest.TestCase):
     def setUp(self):
         # create a new Firefox session
-        self.driver = webdriver.Firefox(capabilities=DesiredCapabilities.FIREFOX)
+        cap=DesiredCapabilities.FIREFOX
+        cap["marionette"] = False
+        self.driver = webdriver.Firefox(capabilities=cap)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
