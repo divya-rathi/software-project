@@ -14,14 +14,14 @@ stages:
 setup:
   stage: setup
   script:
-    - npm ci
+    - npm i
   only:
     - master
 
 test:
   stage: test
   script:
-    - npm run test:unit
+    - npm run test
   only:
     - master
 
