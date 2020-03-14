@@ -1,40 +1,72 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+image: nikolaik/python-nodejs:python3.8-nodejs10-alpine
+cache:
+  untracked: true
+  paths:
+    - node_modules/
 
-name: Python package
+stages:
+  - setup
+  - test 
+  - Generate Docs
+  - Test UI
+  - build
+  - deploy
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+setup:
+  stage: setup
+  script:
+    - npm i
+  only:
+    - master
 
-jobs:
-  build:
+test:
+  stage: test
+  script:
+    - npm run test
+  only:
+    - master
 
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+Build Document:
+  stage: Generate Docs
+  before_script:
+    - make install
+  script:
+    - make html
+    - doc8 --ignore D001
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Lint with flake8
-      run: |
-        pip install flake8
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pip install pytest
-        pytest
+UI Pytest Firefox:
+  stage: Test UI
+  before_script:
+    - make install
+  script:
+    - pytest -vvv --driver Remote --capability browserName firefox --host selenium --port 4444 ./test.py -k test_page_title
+  services:
+    - name: selenium/standalone-firefox
+      alias: selenium
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - npm i -g netlify-cli
+    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+  dependencies:
+    - build
+  only:
+    - master
+
+
+
+ 
+
+
+
