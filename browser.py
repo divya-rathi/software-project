@@ -11,7 +11,7 @@ SELENIUM = os.getenv('SELENIUM', 'http://localhost:4444/wd/hub')
 def get_chrome_driver():
     desired_capabilities = webdriver.DesiredCapabilities.CHROME
     desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
-    chromedriver = "./chromedriver"
+    chromedriver = "./chromedriver.exe"
     os.environ["webdriver.chrome.driver"] = chromedriver
     chrome_options = Options()  
     chrome_options.add_argument("--headless") 
@@ -19,7 +19,7 @@ def get_chrome_driver():
     desired_capabilities.update(chrome_options.to_capabilities())
 
     browser = webdriver.Chrome(
-        executable_path=os.path.abspath("chromedriver.exe"),
+        executable_path=os.path.abspath("./chromedriver.exe"),
         desired_capabilities=desired_capabilities,
         chrome_options=chrome_options)
 
