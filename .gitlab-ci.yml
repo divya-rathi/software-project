@@ -7,38 +7,34 @@ cache:
 stages:
   - setup
   - test 
+  - Test UI
   - build
   - deploy
 
 setup:
   stage: setup
   script:
-   - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-   - npm i
+    - apt update
+    - apt install build-essential
+    - npm i
   only:
     - master
 
-test unit:
+test:
   stage: test
   script:
     - npm run test
   only:
     - master
 
-test_ui:
-  stage: test
+UI Pytest Firefox:
+  stage: Test UI
   script:
-    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-
-test_functional_ui:
-  stage: test
+    - python test.py
   services:
-    - selenium/standalone-chrome
-  script:
-    - pip install selenium==3.3.3
-    - pip install chromedriver
-    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
+    - name: selenium/standalone-firefox
+      alias: selenium
+
 build:
   stage: build
   script:
