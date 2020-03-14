@@ -14,6 +14,14 @@ class test(unittest.TestCase):
         self.driver.maximize_window()
         # navigate to the application home page
         self.driver.get(BASE_URL)
+     def test_page_title(self):
+        self.driver.get(BASE_URL)
+        print("driver.title", self.driver.title)
+        self.assertIn("Gitlab AppEngine CI", self.driver.title)
+        elem = self.driver.find_element(By.NAME, "search")
+        elem.send_keys("Selenium")
+        # elem.send_keys(Keys.RETURN)
+        # assert "No results found." not in driver.page_source
     def test_checklogin_box(self):
         print("validation")
         self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
