@@ -15,6 +15,7 @@ stages:
 setup:
   stage: setup
   script:
+    - apt update
     - apt install build-essential
     - npm i
   only:
