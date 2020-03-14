@@ -18,7 +18,8 @@ def get_chrome_driver():
 
     browser = webdriver.Chrome(
         executable_path=os.path.abspath("chromedriver.exe"),
-        desired_capabilities=desired_capabilities)
+        desired_capabilities=desired_capabilities,
+        chrome_options=chrome_options)
 
     # Desktop size
     browser.set_window_position(0, 0)
