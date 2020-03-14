@@ -29,10 +29,8 @@ test:
 
 UI Pytest Firefox:
   stage: Test UI
-  before_script:
-    - make install
   script:
-    - pytest -vvv --driver Remote --capability browserName firefox --host selenium --port 4444 ./test.py -k test_page_title
+    - python -vvv --driver Remote --capability browserName firefox --host selenium --port 4444 ./test.py -k test_page_title
   services:
     - name: selenium/standalone-firefox
       alias: selenium
