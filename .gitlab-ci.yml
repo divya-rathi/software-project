@@ -1,4 +1,4 @@
-image: node:10.15.3
+image: nikolaik/python3.8-nodejs10
 cache:
   untracked: true
   paths:
@@ -7,6 +7,8 @@ cache:
 stages:
   - setup
   - test 
+  - Generate Docs
+  - Test UI
   - build
   - deploy
 
@@ -23,10 +25,6 @@ test:
     - npm run test
   only:
     - master
-image: python:3.7
-stages:
-    - Generate Docs
-    - Test UI
 
 Build Document:
   stage: Generate Docs
@@ -45,12 +43,6 @@ UI Pytest Firefox:
   services:
     - name: selenium/standalone-firefox
       alias: selenium
-
-image: node:10.15.3
-
-stages: 
-  - build
-  - deploy
 
 build:
   stage: build
