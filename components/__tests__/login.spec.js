@@ -59,6 +59,10 @@ describe("Length", () => {
     wrapper.find("input[type=email]").setValue("cb.en.u4cse17416@cb.students.amrita.edu");
     expect(wrapper.vm.$data.account.email.length).not.toBeLessThan(23)
   })
+  test('Password Type', () => {
+    const att = wrapper.find("#pass").attributes('type');
+    expect(att).toBe('password')
+  })
 });
 
 /*describe("Credentials", () => {
