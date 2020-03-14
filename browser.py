@@ -2,7 +2,7 @@ import os
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
+from selenium.webdriver.chrome.options import Options 
 DRIVER = os.getenv('DRIVER', 'headless_chrome')
 BASE_URL = os.getenv('BASE_URL', 'http://backend:3000')
 SELENIUM = os.getenv('SELENIUM', 'http://localhost:4444/wd/hub')
