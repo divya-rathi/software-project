@@ -13,7 +13,8 @@ def get_chrome_driver():
     desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
     chrome_options = Options()  
     chrome_options.add_argument("--headless") 
-    chrome_options.binary_location = r'.\\chromedriver.exe'  
+    chromedriver_path = helper.find_executable('chromedriver')
+    chrome_options.binary_location = webdriver.Chrome(chromedriver_path, chrome_options=options)
     desired_capabilities.update(chrome_options.to_capabilities())
 
     browser = webdriver.Chrome(
