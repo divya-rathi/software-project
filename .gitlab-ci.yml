@@ -1,5 +1,5 @@
 image: node:10.15.3
-
+image: python:3.7
 cache:
   untracked: true
   paths:
@@ -7,7 +7,9 @@ cache:
 
 stages:
   - setup
-  - test
+  - test 
+  - Generate Docs
+  - Test UI
   - build
   - deploy
 
@@ -24,6 +26,24 @@ test:
     - npm run test
   only:
     - master
+
+Build Document:
+  stage: Generate Docs
+  before_script:
+    - make install
+  script:
+    - make html
+    - doc8 --ignore D001
+
+UI Pytest Firefox:
+  stage: Test UI
+  before_script:
+    - make install
+  script:
+    - pytest -vvv --driver Remote --capability browserName firefox --host selenium --port 4444 ./test.py -k test_page_title
+  services:
+    - name: selenium/standalone-firefox
+      alias: selenium
 
 build:
   stage: build
@@ -44,3 +64,10 @@ deploy:
     - build
   only:
     - master
+
+
+
+ 
+
+
+
