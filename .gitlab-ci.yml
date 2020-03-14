@@ -20,21 +20,26 @@ setup:
   only:
     - master
 
-test:
+test unit:
   stage: test
   script:
     - npm run test
   only:
     - master
 
-UI Pytest Firefox:
-  stage: Test UI
+test_ui:
+  stage: test
   script:
-    - python test.py
-  services:
-    - name: selenium/standalone-firefox
-      alias: selenium
+    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
+    - python -m unittest discover -s backend
 
+test_functional_ui:
+  stage: test
+  services:
+    - selenium/standalone-chrome
+  script:
+    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
+    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL=https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python -m unittest discover -s 
 build:
   stage: build
   script:
