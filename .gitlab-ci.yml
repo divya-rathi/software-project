@@ -30,6 +30,7 @@ test:
 UI Pytest Firefox:
   stage: Test UI
   script:
+    - npm run confidence-check --host=selenium__standalone-chrome
     - python test.py
   services:
     - selenium/standalone-chrome:latest
