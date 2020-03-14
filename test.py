@@ -14,7 +14,7 @@ class test(unittest.TestCase):
         self.driver.maximize_window()
         # navigate to the application home page
         self.driver.get(BASE_URL)
-     def test_page_title(self):
+    def test_page_title(self):
         self.driver.get(BASE_URL)
         print("driver.title", self.driver.title)
         self.assertIn("Gitlab AppEngine CI", self.driver.title)
