@@ -11,9 +11,8 @@ SELENIUM = os.getenv('SELENIUM', 'http://localhost:4444/wd/hub')
 def get_chrome_driver():
     desired_capabilities = webdriver.DesiredCapabilities.CHROME
     desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
-
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome --disable-plugins --disable-instant-extended-api")
+    chrome_options = Options()  
+    chrome_options.add_argument("--headless") 
     chrome_options.binary_location = r'.\\chromedriver.exe'  
     desired_capabilities.update(chrome_options.to_capabilities())
 
