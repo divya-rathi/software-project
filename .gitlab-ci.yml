@@ -13,7 +13,8 @@ stages:
 setup:
   stage: setup
   script:
-   - pip install -t backend/lib -r backend/requirements.txt
+   - pip install unitest
+   - pip install seleium
    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
    - npm i
   only:
