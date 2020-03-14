@@ -41,7 +41,7 @@ def get_headless_chrome():
     desired_capabilities.update(chrome_options.to_capabilities())
     chrome_driver = os.getcwd() +"\\chromedriver.exe"
 
-    browser = webdriver.Remote(chrome_options=chrome_options, executable_path=chrome_driver)
+    browser = webdriver.Remote(executable_path=chrome_driver,desired_capabilities=desired_capabilities)
 
     # Desktop size
     browser.set_window_position(0, 0)
