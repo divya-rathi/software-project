@@ -13,7 +13,7 @@ stages:
 setup:
   stage: setup
   script:
-   - pip install chromedriver-installer
+   - pip install chromedriver
    - pip install seleium
    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
    - npm i
