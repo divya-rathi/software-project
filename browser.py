@@ -2,7 +2,6 @@ import os
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from webdriver_manager.chrome import ChromeDriverManager
 
 DRIVER = os.getenv('DRIVER', 'headless_chrome')
 BASE_URL = os.getenv('BASE_URL', 'http://backend:3000')
@@ -15,7 +14,7 @@ def get_chrome_driver():
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome --disable-plugins --disable-instant-extended-api")
-    chrome_options.binary_location = '.\chromedriver.exe'  
+    chrome_options.binary_location = r'.\\chromedriver.exe'  
     desired_capabilities.update(chrome_options.to_capabilities())
 
     browser = webdriver.Chrome(
