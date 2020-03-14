@@ -15,7 +15,6 @@ setup:
   stage: setup
   script:
     - apt update
-    - apt-get build-dep program
     - apt install build-essential
     - npm i
   only:
