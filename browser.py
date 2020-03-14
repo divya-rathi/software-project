@@ -15,9 +15,7 @@ def get_chrome_driver():
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome --disable-plugins --disable-instant-extended-api")
-chrome_options = Options()  
-chrome_options.add_argument("--headless")  
-chrome_options.binary_location = '.\chromedriver.exe'  
+    chrome_options.binary_location = '.\chromedriver.exe'  
     desired_capabilities.update(chrome_options.to_capabilities())
 
     browser = webdriver.Chrome(
