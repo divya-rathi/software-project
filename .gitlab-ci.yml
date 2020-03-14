@@ -7,7 +7,6 @@ cache:
 stages:
   - setup
   - test 
-  - Generate Docs
   - Test UI
   - build
   - deploy
@@ -28,20 +27,10 @@ test:
   only:
     - master
 
-Build Document:
-  stage: Generate Docs
-  before_script:
-    - make install
-  script:
-    - make html
-    - doc8 --ignore D001
-
 UI Pytest Firefox:
   stage: Test UI
-  before_script:
-    - make install
   script:
-    - pytest -vvv --driver Remote --capability browserName firefox --host selenium --port 4444 ./test.py -k test_page_title
+    - python test.py
   services:
     - name: selenium/standalone-firefox
       alias: selenium
