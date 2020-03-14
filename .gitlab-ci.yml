@@ -7,31 +7,30 @@ cache:
 stages:
   - setup
   - test 
+  - Test UI
   - build
   - deploy
 
 setup:
   stage: setup
   script:
-   - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-   - npm i
+    - apt update
+    - apt install build-essential
+    - npm i
   only:
     - master
 
-test unit:
+test:
   stage: test
   script:
     - npm run test
   only:
     - master
 
-test_ui:
-  stage: test
+UI Pytest Firefox:
+  stage: Test UI
   script:
-    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-
-test_functional_ui:
-  stage: test
+    - python test.py
   services:
     - selenium/standalone-chrome
   script:
