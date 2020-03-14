@@ -38,7 +38,7 @@ test_functional_ui:
     - selenium/standalone-chrome
   script:
     - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
-    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python -m unittest discover -s 
+    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
 build:
   stage: build
   script:
