@@ -33,10 +33,7 @@ def get_headless_chrome():
     desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
 
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument(
-        "--user-data-dir=/tmp/browserdata/chrome 
-        --disable-plugins --disable-instant-extended-api 
-        --headless")
+    chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome  --disable-plugins --disable-instant-extended-api   --headless")
 
     desired_capabilities.update(chrome_options.to_capabilities())
 
