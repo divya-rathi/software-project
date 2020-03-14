@@ -33,14 +33,15 @@ def get_chrome_driver():
 
 def get_headless_chrome():
     desired_capabilities = webdriver.DesiredCapabilities.CHROME
-    desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
+    desired_capabilities['loggingPrefs'] = {'browser': 'chrome'}
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome  --disable-plugins --disable-instant-extended-api   --headless")
 
     desired_capabilities.update(chrome_options.to_capabilities())
+    chrome_driver = os.getcwd() +"\\chromedriver.exe"
 
-    browser = webdriver.Remote(command_executor=SELENIUM,capabilities=desired_capabilities)
+    browser = webdriver.Remote(chrome_options=chrome_options, executable_path=chrome_driver)
 
     # Desktop size
     browser.set_window_position(0, 0)
