@@ -33,7 +33,7 @@ test_ui:
 test_functional_ui:
   stage: test
   services:
-    - selenium/standalone-chrome
+    - selenium/standalone-chrome:latest
   script:
     - pip install selenium==3.3.0
     - pip install chromedriver
