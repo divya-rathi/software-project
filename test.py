@@ -1,20 +1,12 @@
-import unittest
-import selenium
+import unittest2
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-import webbrowser
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary 
-import os
-import sys
-class test(unittest.TestCase):
+class test(unittest2.TestCase):
     def setUp(self):
         # create a new Firefox session
-        cap=DesiredCapabilities.FIREFOX
-        # cap["marionette"] = False
-        self.driver = webdriver.Firefox(capabilities=cap)
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
@@ -75,5 +67,5 @@ class test(unittest.TestCase):
             return False
         return True
 if(__name__=="__main__"):
-    print("h..")
-    unittest.main()
+    print("hi")
+    unittest2.main()
