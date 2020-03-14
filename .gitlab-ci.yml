@@ -1,4 +1,4 @@
-image: nikolaik/python-nodejs:python3.8-nodejs10-alpine
+image: nikolaik/python-nodejs:python3.8-nodejs10
 cache:
   untracked: true
   paths:
@@ -15,6 +15,7 @@ stages:
 setup:
   stage: setup
   script:
+    - apt install build-essential
     - npm i
   only:
     - master
