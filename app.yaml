@@ -1,0 +1,21 @@
+runtime: python27
+threadsafe: true
+
+handlers:
+  - url: /
+    script: backend.app
+
+  - url: /static
+    static_dir: backend/static
+
+skip_files:
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^(.*/)?.*.py[co]$
+  - ^(.*/)?.*/RCS/.*$
+  - ^(.*/)?..*$
+  - ^(.*/)?.*_test.(html|js|py)$
+  - ^(.*/)?.*.DS_Store$
+  - ^.*bower_components(/.*)?
+  - ^.*node_modules(/.*)?
+  - ^.*jspm_packages(/.*)?

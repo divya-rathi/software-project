@@ -13,9 +13,7 @@ def get_chrome_driver():
     desired_capabilities['loggingPrefs'] = {'browser': 'ALL'}
 
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument(
-        "--user-data-dir=/tmp/browserdata/chrome 
-        --disable-plugins --disable-instant-extended-api")
+    chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome --disable-plugins --disable-instant-extended-api")
 
     desired_capabilities.update(chrome_options.to_capabilities())
 
