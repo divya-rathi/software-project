@@ -32,9 +32,12 @@ UI Pytest Firefox:
   script:
     - python test.py
   services:
-    - name: selenium/standalone-firefox
-      alias: selenium
-
+    - selenium/standalone-chrome
+  script:
+    - pip install selenium==3.3.0
+    - pip install chromedriver
+    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
+    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="chrome" python test.py
 build:
   stage: build
   script:

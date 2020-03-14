@@ -14,11 +14,11 @@ def get_chrome_driver():
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--user-data-dir=/tmp/browserdata/chrome --disable-plugins --disable-instant-extended-api")
-
+    chrome_options.binary_location = r'.\\chromedriver.exe'  
     desired_capabilities.update(chrome_options.to_capabilities())
 
     browser = webdriver.Chrome(
-        executable_path='chromedriver',
+        executable_path=os.path.abspath("chromedriver.exe"),
         desired_capabilities=desired_capabilities)
 
     # Desktop size
@@ -37,7 +37,7 @@ def get_headless_chrome():
 
     desired_capabilities.update(chrome_options.to_capabilities())
 
-    browser = webdriver.Remote(command_executor=SELENIUM,desired_capabilities=desired_capabilities)
+    browser = webdriver.Remote(command_executor=SELENIUM,capabilities=desired_capabilities)
 
     # Desktop size
     browser.set_window_position(0, 0)
