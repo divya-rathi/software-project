@@ -16,12 +16,12 @@ class test(unittest2.TestCase):
         driver_path = os.getcwd() + '/geckodriver'
         binary_path = os.getcwd() + '/firefox/firefox'
         binary = FirefoxBinary(binary_path)
-        self.driver = webdriver.Firefox(executable_path=driver_path,options=options,firefox_binary=binary)
+        self.driver = webdriver.Firefox(executable_path=driver_path,options=options)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         self.driver.get("https://pro-deploy-123.netlify.com/login")
 
-        self.driver1 = webdriver.Firefox(executable_path=driver_path,options=options,firefox_binary=binary)
+        self.driver1 = webdriver.Firefox(executable_path=driver_path,options=options)
         self.driver1.implicitly_wait(30)
         self.driver1.maximize_window()
         self.driver1.get(home)
