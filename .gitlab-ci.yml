@@ -36,7 +36,7 @@ test_ui:
     - apt-get upgrade
     - wget https://ftp.mozilla.org/pub/firefox/releases/68.0/linux-x86_64/en-US/firefox-68.0.tar.bz2
     - tar -xjf firefox-68.0.tar.bz2
-    - chown -R  root seluser
+    - sudo su
     - pip install selenium==3.4.1
     - pip install bs4
     - echo $pwd
