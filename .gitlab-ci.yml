@@ -34,7 +34,7 @@ test_ui:
   script:
     - chmod +x geckodriver
     - pip install selenium==3.4.1
-    - apt install firefox==68.0
+    - apt install firefox=68.0
     - pip install bs4
     - echo $pwd
     - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
