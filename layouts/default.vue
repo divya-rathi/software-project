@@ -83,7 +83,7 @@ export default {
         userLoggedIn: "users/isUserLoggedIn"
     }),
     mounted() {
-        let userObject = this.$store.state.users;
+        let userObject = window.$nuxt.$store.state.users;
         if (
             Object.entries(userObject).length === 0 &&
             userObject.constructor === Object
