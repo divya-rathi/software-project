@@ -32,7 +32,6 @@ test_ui:
   script:
     - pip install selenium==3.141.0
     - pip install bs4
-    - export PYTHONPATH=$PWD/geckodriver.exe
     - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH   
     - export PATH=$PWD/geckodriver.exe
     - echo $pwd
@@ -45,7 +44,6 @@ test_ui:
 #   script:
 #     - pip install selenium==3.141.0
 #     - pip install bs4
-#     - export PYTHONPATH=$PWD/chromedriver.exe
 #     - export PATH=$PWD/chromedriver.exe
 #     - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
 #     - echo $pwd
