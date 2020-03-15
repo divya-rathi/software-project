@@ -1,6 +1,6 @@
 <template>
   <div class="hero is-fullheight">
-    <h1 class="has-text-centered is-size-1 is-family-sans-serif title">
+    <h1 class="has-text-centered is-size-1 is-family-sans-serif title" id="courseCode">
       {{ courseCode }} - {{ courseDetails.courseName }}
     </h1>
     <div class="hero-body">
