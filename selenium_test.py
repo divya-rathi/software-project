@@ -33,15 +33,61 @@ class TestSelenium(unittest.TestCase):
         self.driver.get('https://pro-deploy-123.netlify.com/login')
         xpath_home = "//*[contains(text(), 'Mantenha seu telefone conectado')]"
         self.wait_for_element(xpath_home)
-    def test_checklogin_box(self):
-        print("validation")
-        self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
-        self.password = "chocolate"
-        self.element = self.driver.find_element_by_id("email")
-        self.element.send_keys(self.user_name)
-        self.element = self.driver.find_element_by_id("pass")
-        self.element.send_keys(self.password)
-        self.element.send_keys(Keys.RETURN)
+    def wait_for_element(self, name):
+        return self.wait.until(EC.visibility_of_element_located((By.XPATH,
+                                                                    name)))
+
+    # def test_click_on_default_group(self):
+    #     xpath_group = f'//*[@title="{self.default_group}"]'
+    #     self.wait_for_element(xpath_group)
+
+    #     group = self.driver.find_element_by_xpath(xpath_group)
+    #     group.click()
+
+    #     groups = self.driver.find_elements_by_xpath(xpath_group)
+
+    #     # after click on the group, if there are two title of this group on
+    #     # the screen it means that there are information about them on the
+    #     # sidebar and as the title in the header of the group clicked
+    #     self.assertEqual(2, len(groups))
+
+    # #def test_click_on_group_and_send_text(self):
+    # #     xpath_group = f'//*[@title="{self.default_group}"]'
+    # #     self.wait_for_element(xpath_group)
+
+    # #     group = self.driver.find_element_by_xpath(xpath_group)
+    # #     group.click()
+
+    # #     groups = self.driver.find_elements_by_xpath(xpath_group)
+
+    # #     # after click on the group, if there are two title of this group on
+    # #     # the screen it means that there are information about them on the
+    # #     # sidebar and as the title in the header of the group clicked
+    # #     self.assertEqual(2, len(groups))
+
+    # #     # finds the form input
+    # #     xpath_input_group = "//div[@contenteditable='true']"
+    # #     input_group = self.driver.find_element_by_xpath(xpath_input_group)
+    # #     text = 'Olá, resocie!'
+    # #     input_group.send_keys(text)
+    # #     xpath_send_group = "//span[@data-icon='send']"
+    # #     send_group = self.driver.find_element_by_xpath(xpath_send_group)
+    # #     send_group.click()
+
+    # #     time.sleep(2)
+    # #     html = self.driver.page_source
+    # #     soup = BeautifulSoup(html, "html.parser")
+    # #     time.sleep(1)
+    # #     texts = soup.findAll("span",
+    # #                 {"class": "selectable-text invisible-space copyable-text"})
+
+    # #     # checks if the last message received in the group was the message sent
+    # #     self.assertEqual(text, texts[-1].text)
+
+    # # def tearDown(self):
+    # #     # wait a little and close the fake web
+    # #     time.sleep(2)
+    # #     self.driver.quit()
 if __name__ == '__main__':
     print("hi")
     unittest.main()
