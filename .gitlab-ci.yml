@@ -28,15 +28,15 @@ test unit:
 test_ui:
   stage: test
   script:
-    - npm run confidence-check --host=selenium__standalone-chrome
+    - npm run confidence-check --host=selenium__standalone-firefix
     - python test.py
   services:
-    - selenium/standalone-chrome:latest
+    - selenium/standalone-firefox:latest
   script:
     - pip install selenium==3.3.0
-    - pip install chromedriver
+    - pip install geckodriver
     - export PYTHONPATH=$PWD/geckodriver.exe
-    - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
+    - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
 build:
   stage: build
   script:
