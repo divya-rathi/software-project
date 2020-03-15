@@ -40,7 +40,7 @@
                 </div>
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary" v-if="!userLoggedIn">
+                        <a class="button is-primary" v-if="!userLoggedIn" id="loginnav">
                             <nuxt-link to="/login">
                                 <strong>Log In</strong>
                             </nuxt-link>
@@ -83,7 +83,7 @@ export default {
         userLoggedIn: "users/isUserLoggedIn"
     }),
     mounted() {
-        let userObject = window.$nuxt.$store.state.users;
+        let userObject = this.$store.state.users;
         if (
             Object.entries(userObject).length === 0 &&
             userObject.constructor === Object
