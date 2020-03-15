@@ -12,7 +12,7 @@ BASE_URL = os.getenv('BASE_URL', 'https://pro-deploy-123.netlify.com/login')
 SELENIUM = os.getenv('SELENIUM', 'http://localhost:4444/wd/hub')
 
 def get_headless_chrome():
-    options =  webdriver.FirefoxOptions()
+    options = Options()
     options.add_argument('-headless')
     options.headless=True
     driver_path = os.getcwd() + '/geckodriver'
