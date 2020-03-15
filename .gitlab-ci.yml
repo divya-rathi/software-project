@@ -33,6 +33,9 @@ test_ui:
     - selenium/standalone-firefox:latest
   script:
     - chmod +x geckodriver
+    - apt-get upgrade
+    - wget https://ftp.mozilla.org/pub/firefox/releases/68.0/linux-x86_64/en-US/firefox-68.0.tar.bz2
+    - tar -xjf firefox-68.0.tar.bz2
     - pip install selenium==3.4.1
     - pip install bs4
     - echo $pwd
@@ -40,9 +43,6 @@ test_ui:
 build:
   stage: build
   script:
-    - apt-get upgrade
-    - wget https://ftp.mozilla.org/pub/firefox/releases/68.0/linux-x86_64/en-US/firefox-68.0.tar.bz2
-    - tar -xjf firefox-68.0.tar.bz2
     - npm run build
   artifacts:
     paths:
