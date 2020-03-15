@@ -34,6 +34,8 @@ test_ui:
     - selenium/standalone-firefox:latest
   script:
     - pip install selenium==3.3.0
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
+    - tar -xvzf geckodriver*
     - chmod +x geckodriver
     - export PATH=$PATH:.
     - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
