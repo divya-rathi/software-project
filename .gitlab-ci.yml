@@ -36,8 +36,13 @@ test_ui:
     - apt-get upgrade
     - wget https://ftp.mozilla.org/pub/firefox/releases/68.0/linux-x86_64/en-US/firefox-68.0.tar.bz2
     - tar -xjf firefox-68.0.tar.bz2
-    - pip install selenium==3.4.1
     - pip install bs4
+    - linecache2==1.0.0
+    - selenium==3.141.0
+    - six==1.14.0
+    - traceback2==1.4.0
+    - unittest2==1.1.0
+    - urllib3==1.25.8
     - python app.py
 build:
   stage: build

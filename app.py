@@ -1,4 +1,4 @@
-import unittest
+import unittest2
 import os
 from selenium import webdriver
 import time
@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 
-class test(unittest.TestCase):
+class test(unittest2.TestCase):
     def setUp(self):
         # create a new Firefox session
         options = Options()
@@ -112,7 +112,7 @@ class test(unittest.TestCase):
 
 home = "https://pro-deploy-123.netlify.com/"
 if(__name__=="__main__"):
-    unittest.main()
+    unittest2.main()
 
 
 '''
