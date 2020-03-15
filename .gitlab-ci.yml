@@ -27,12 +27,13 @@ test unit:
 
 test_ui:
   stage: test
+  script:
+    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
   services:
     - selenium/standalone-firefox:latest
   script:
     - pip install selenium==3.141.0
     - pip install bs4
-    - export PYTHONPATH=$PWD/backend/lib:$PYTHONPATH
     - export PATH=$PWD/geckodriver.exe
     - echo $pwd
     - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
