@@ -32,7 +32,7 @@ test_ui:
   services:
     - selenium/standalone-firefox:latest
   script:
-    - chmod +x geckodriver
+    - chmod +x geckodriver.exe
     - pip install selenium==3.141.0
     - pip install bs4
     - echo $pwd
