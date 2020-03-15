@@ -14,6 +14,27 @@ class test(unittest.TestCase):
         self.driver.maximize_window()
         # navigate to the application home page
         self.driver.get(BASE_URL)
+    def test_checkloc(self):
+        print("Properly Aligned")
+        self.loc1 = self.driver.find_element_by_id('email').location
+        self.loc2 = self.driver.find_element_by_id('pass').location
+        self.assertEqual(self.loc1['x'],self.loc2['x'])
+
+    def test_checklogin_box(self):
+        print("validation")
+        self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
+        self.password = "chocolate"
+        self.element = self.driver.find_element_by_id("email")
+        self.element.send_keys(self.user_name)
+        self.element = self.driver.find_element_by_id("pass")
+        self.element.send_keys(self.password)
+        self.driver.find_element_by_id('login').click()
+        time.sleep(10)
+        self.driver.find_element_by_link_text('Account').click()
+        time.sleep(10)
+        url = self.driver.current_url
+        self.assertEqual(url, "https://pro-deploy-123.netlify.com/account")
+        #self.element.send_keys(Keys.RETURN)
     def test_checklogin_box(self):
         print("validation")
         self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
