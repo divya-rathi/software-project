@@ -33,6 +33,15 @@ class TestSelenium(unittest.TestCase):
         self.driver.get('https://pro-deploy-123.netlify.com/login')
         xpath_home = "//*[contains(text(), 'Mantenha seu telefone conectado')]"
         self.wait_for_element(xpath_home)
+    def test_checklogin_box(self):
+        print("validation")
+        self.user_name = "cb.en.u4cse20000@cb.students.amrita.edu"
+        self.password = "chocolate"
+        self.element = self.driver.find_element_by_id("email")
+        self.element.send_keys(self.user_name)
+        self.element = self.driver.find_element_by_id("pass")
+        self.element.send_keys(self.password)
+        self.element.send_keys(Keys.RETURN)
 if __name__ == '__main__':
     print("hi")
     unittest.main()
