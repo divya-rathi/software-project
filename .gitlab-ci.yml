@@ -38,7 +38,8 @@ test_ui:
     - sh -c 'tar -x geckodriver -zf geckodriver-v0.23.0-linux64.tar.gz -O > /usr/bin/geckodriver'
     - chmod +x /usr/bin/geckodriver
     - rm geckodriver-v0.23.0-linux64.tar.gz
-    - export PATH=$PATH:.
+    - export PATH=$PATH:/Users/bob
+    - echo $PATH
     - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
 build:
   stage: build
