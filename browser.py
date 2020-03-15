@@ -1,3 +1,5 @@
+import unittest
+from selenium import webdriver
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -10,8 +12,9 @@ BASE_URL = os.getenv('BASE_URL', 'https://pro-deploy-123.netlify.com/login')
 SELENIUM = os.getenv('SELENIUM', 'http://localhost:4444/wd/hub')
 
 def get_headless_chrome():
-    options = Options()
+    options =  webdriver.FirefoxOptions()
     options.add_argument('-headless')
+    options.headless=True
     browser = Firefox(executable_path='geckodriver', options=options)
     # Desktop size
     browser.set_window_position(0, 0)
