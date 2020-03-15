@@ -14,7 +14,7 @@ class test(unittest2.TestCase):
         options = Options()
         options.add_argument('-headless')
         driver_path = os.getcwd() + '/geckodriver'
-        binary_path = '/firefox/firefox'
+        binary_path = os.getcwd() + '/firefox/firefox'
         binary = FirefoxBinary(binary_path)
         self.driver = webdriver.Firefox(executable_path=driver_path,options=options,firefox_binary=binary)
         self.driver.implicitly_wait(30)
