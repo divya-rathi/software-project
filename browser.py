@@ -15,7 +15,7 @@ def get_headless_chrome():
     options =  webdriver.FirefoxOptions()
     options.add_argument('-headless')
     options.headless=True
-    driver_path = os.getcwd() + '/geckodriver.exe'
+    driver_path = os.getcwd() + '/geckodriver'
     browser = Firefox(executable_path=driver_path,firefox_options=options)
     # Desktop size
     browser.set_window_position(0, 0)
