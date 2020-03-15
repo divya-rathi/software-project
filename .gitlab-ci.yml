@@ -35,7 +35,7 @@ test_ui:
   script:
     - pip install selenium==3.3.0
     - pip install chromedriver
-    - export PYTHONPATH=$PWD
+    - export PYTHONPATH=$PWD/geckodriver.exe
     - SELENIUM="http://selenium__standalone-chrome:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
 build:
   stage: build
