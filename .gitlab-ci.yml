@@ -27,9 +27,6 @@ test unit:
 
 test_ui:
   stage: test
-  script:
-    - npm run confidence-check --host=selenium__standalone-firefix
-    - python test.py
   services:
     - selenium/standalone-firefox:latest
   script:
@@ -39,7 +36,12 @@ test_ui:
     - chmod +x /usr/bin/geckodriver
     - rm geckodriver-v0.23.0-linux64.tar.gz
     - export PATH=$PATH:/usr/bin
+    - export PATH=$PATH
+    - export PATH=$PATH:/usr/bin/geckodrives
+    - export PYTHONPATH=$PWD
+    - export PYTHONPATH=$PWD/usr/bin/geckodriver
     - echo $PATH
+    - echo $PYTHONPATH
     - SELENIUM="http://selenium__standalone-firefox:4444/wd/hub" BASE_URL="https://pro-deploy-123.netlify.com/login" DRIVER="headless_chrome" python test.py
 build:
   stage: build
