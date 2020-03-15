@@ -38,7 +38,7 @@ test_ui:
     - tar -xjf firefox-68.0.tar.bz2
     - pip install selenium==3.141.0
     - pip install unittest2==1.1.0
-    - pip insatll urllib3==1.25.8
+    - pip install urllib3==1.25.8
     - python app.py
 build:
   stage: build
