@@ -3,7 +3,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import unittest
@@ -18,7 +18,7 @@ class TestSelenium(unittest.TestCase):
         self.default_group = 'GRUPO RESOCIE'
 
         # chromedriver binary
-        driver_path = os.getcwd() + '/chromedriver'
+        driver_path = os.getcwd() + '/chromedriver.exe'
         profile_path = os.getcwd() + '/profile/'
 
         chrome_options = webdriver.ChromeOptions()
@@ -26,7 +26,7 @@ class TestSelenium(unittest.TestCase):
         chrome_options.add_argument(f'--user-data-dir={profile_path}')
 
         # create the fake browser
-        self.driver = webdriver.Chrome(driver_path, options=chrome_options)
+        self.driver = webdriver.Chrome(executable_path=driver_path, options=chrome_options)
 
         self.wait = WebDriverWait(self.driver, 15)
         # get request using the fake browser
@@ -37,19 +37,19 @@ class TestSelenium(unittest.TestCase):
         return self.wait.until(EC.visibility_of_element_located((By.XPATH,
                                                                     name)))
 
-    # def test_click_on_default_group(self):
-    #     xpath_group = f'//*[@title="{self.default_group}"]'
-    #     self.wait_for_element(xpath_group)
+    def test_click_on_default_group(self):
+        xpath_group = f'//*[@title="{self.default_group}"]'
+        self.wait_for_element(xpath_group)
 
-    #     group = self.driver.find_element_by_xpath(xpath_group)
-    #     group.click()
+        group = self.driver.find_element_by_xpath(xpath_group)
+        group.click()
 
-    #     groups = self.driver.find_elements_by_xpath(xpath_group)
+        groups = self.driver.find_elements_by_xpath(xpath_group)
 
-    #     # after click on the group, if there are two title of this group on
-    #     # the screen it means that there are information about them on the
-    #     # sidebar and as the title in the header of the group clicked
-    #     self.assertEqual(2, len(groups))
+        # after click on the group, if there are two title of this group on
+        # the screen it means that there are information about them on the
+        # sidebar and as the title in the header of the group clicked
+        self.assertEqual(2, len(groups))
 
     # #def test_click_on_group_and_send_text(self):
     # #     xpath_group = f'//*[@title="{self.default_group}"]'
