@@ -39,7 +39,6 @@ test_ui:
     - wget https://ftp.mozilla.org/pub/firefox/releases/74.0/linux-x86_64/en-US/firefox-74.0.tar.bz2
     - tar -xjf firefox-74.0.tar.bz2
     - cp -r ./firefox /bin/firefox
-    - chmod +x ./firefox/firefox
     - chmod +x /bin/firefox/firefox
     - pip install selenium==3.141.0
     - pip install unittest2==1.1.0
