@@ -25,12 +25,12 @@ test unit:
   only:
     - master
 
-# test_ui:
-#   stage: test
-#   services:
-#     - gadsater/ui-test:latest
-#   script:
-#     - python app.py
+test_ui:
+  stage: test
+  services:
+    - gadsater/ui-test:latest
+  script:
+    - python app.py
 
 build:
   stage: build
