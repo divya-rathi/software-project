@@ -13,8 +13,8 @@ class test(unittest2.TestCase):
         # create a new Firefox session
         options = Options()
         options.add_argument('-headless')
-        driver_path = os.getcwd() + '/geckodriver'
-        binary_path = os.getcwd() + '/firefox/firefox'
+        driver_path = '/bin/geckodriver'
+        binary_path = '/bin/firefox/firefox'
         binary = FirefoxBinary(binary_path)
         self.driver = webdriver.Firefox(executable_path=driver_path,options=options,firefox_binary=binary)
         self.driver.implicitly_wait(30)
