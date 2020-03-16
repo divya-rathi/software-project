@@ -42,7 +42,7 @@
             id="login"
             name="login"
           >
-            Log on
+            Log in
           </button>
         </div>
       </form>
