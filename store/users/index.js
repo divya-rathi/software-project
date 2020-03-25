@@ -39,9 +39,9 @@ export const getters = {
 
 export const actions = {
   async login({ commit, state }, account) {
-    if (process.server) return;
+    if (process.server){return} ;
 
-    if (state.loggedIn == false) {
+    if (state.loggedIn === false) {
       try {
         await auth.signInWithEmailAndPassword(account.email, account.password);
 
@@ -70,7 +70,7 @@ export const actions = {
 
         commit("SET_UID", uid);
         commit("SET_USER_LOGGEDIN", true);
-        console.log("Successfully logged in!");
+        // console.log("Successfully logged in!");
       } catch (err) {
         throw err;
       }
@@ -82,6 +82,6 @@ export const actions = {
     commit("SET_USER_DETAILS", null);
     commit("SET_USER_LOGGEDIN", false);
     // this.$router.push({ path: "/" });
-    console.log("Successfully logged out!");
+    // console.log("Successfully logged out!");
   }
 };

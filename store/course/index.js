@@ -34,7 +34,7 @@ export const mutations = {
   SET_REVIEW: (state, review) => {
     window.$nuxt.$set(state.reviews, review.reviewId, review.reviewData);
   },
-  CLEAR_REVIEWS: state => {
+  CLEAR_REVIEWS: (state) => {
     window.$nuxt.$set(state, "reviews", {});
   },
   SET_QUESTION: (state, question) => {
@@ -44,7 +44,7 @@ export const mutations = {
       question.questionData
     );
   },
-  CLEAR_QUESTIONS: state => {
+  CLEAR_QUESTIONS: (state) => {
     window.$nuxt.$set(state, "questions", {});
   }
 };
@@ -85,32 +85,32 @@ export const actions = {
         commit("SET_COURSE_CODE", newCourseCode);
         commit("SET_COURSE_DETAILS", newCourseDetails);
 
-        newCourseDetails["reviews"].forEach(reviewId => {
+        newCourseDetails["reviews"].forEach((reviewId) => {
           fireDb
             .collection("reviews")
             .doc(reviewId)
             .get()
             .then(doc => {
               commit("SET_REVIEW", { reviewId, reviewData: doc.data() });
-              console.log({ reviewId, reviewData: doc.data() });
+            //   console.log({ reviewId, reviewData: doc.data() });
             });
         });
 
-        newCourseDetails["questions"].forEach(questionId => {
+        newCourseDetails["questions"].forEach((questionId) => {
           fireDb
             .collection("questions")
             .doc(questionId)
             .get()
             .then((doc) => {
               commit("SET_QUESTION", { questionId, questionData: doc.data() });
-              console.log({ questionId, questionData: doc.data() });
+            //   console.log({ questionId, questionData: doc.data() });
             });
         });
       })
       .catch(function(err) {
         commit("SET_COURSE_CODE", null);
         commit("SET_COURSE_DETAILS", null);
-        console.log(err);
+        // console.log(err);
       });
   },
   fetchCourseList({ commit, state }) {
@@ -118,7 +118,7 @@ export const actions = {
       fireDb
         .collection("courses")
         .get()
-        .then(querySnapshot => {
+        .then((querySnapshot) => {
           let courseCodeList = [];
           let courseNameList = [];
           let courseIconList = [];

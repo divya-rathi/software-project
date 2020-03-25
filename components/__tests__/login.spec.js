@@ -27,8 +27,8 @@ describe("Components Check", () => {
   });
   
   test("Password Type", () => {
-    const att = wrapper.find("#pass").attributes('type');
-    expect(att).toBe('password')
+    const att = wrapper.find("#pass").attributes("type");
+    expect(att).toBe("password");
   })
   
 });
@@ -47,7 +47,6 @@ describe("Credentials" , () => {
   test("Password Missing", () => {
     const expectedArg = "Please enter both username and password";
     const component = factory();
-    window.alert = jest.fn();
     wrapper.find("input[type=email]").setValue("");
     wrapper.find("input[type=password]").setValue("divya");
     wrapper.find("button").trigger("submit.prevent");
@@ -58,12 +57,12 @@ describe("Credentials" , () => {
 
 describe("Length", () => {
   const wrapper = factory();
-  test('Check for Email-id length', () => {
+  test("Check for Email-id length", () => {
     wrapper.find("input[type=email]").setValue("cb.en.u4cse17416@cb.students.amrita.edu");
     expect(wrapper.vm.$data.account.email.length).toBeGreaterThan(23)
-  })
-  test('Check for negative Email-id length', () => {
+  });
+  test("Check for negative Email-id length", () => {
     wrapper.find("input[type=email]").setValue("cb.en.u4cse17416@cb.students.amrita.edu");
     expect(wrapper.vm.$data.account.email.length).not.toBeLessThan(23)
-  })
+  });
 });

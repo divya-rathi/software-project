@@ -11,7 +11,6 @@ export const actions = {
         dispatch("addStudentReviewRecord", reviewId);
         dispatch("addCourseReviewRecord", reviewId);
         dispatch("reviewPostProcess", reviewData);
-        console.log(reviewId);
       });
   },
   addStudentReviewRecord({ rootState }, reviewId) {
@@ -21,9 +20,6 @@ export const actions = {
       .update({
         reviews: fireVal.FieldValue.arrayUnion(reviewId)
       })
-      .then(() => {
-        console.log("added Review in Students Record");
-      });
   },
   addCourseReviewRecord({ rootState }, reviewId) {
     fireDb
@@ -32,9 +28,6 @@ export const actions = {
       .update({
         reviews: fireVal.FieldValue.arrayUnion(reviewId)
       })
-      .then(() => {
-        console.log("added Review in Courses Record");
-      });
   },
   reviewPostProcess({ commit }, reviewData) {
     let reviewId = `${reviewData.courseCode}_${reviewData.rollNumber}`;

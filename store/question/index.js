@@ -5,7 +5,7 @@ export const actions = {
     fireDb
       .collection("questions")
       .add(questionData)
-      .then(docRef => {
+      .then((docRef) => {
         dispatch("addStudentQuestionRecord", docRef.id);
         dispatch("addCourseQuestionRecord", docRef.id);
         dispatch("postProcessQuestion", {
@@ -13,7 +13,7 @@ export const actions = {
           questionData: questionData
         });
       })
-      .catch(err => console.log(err));
+    //   .catch(err => console.log(err));
   },
   addStudentQuestionRecord({ rootState }, questionId) {
     fireDb
@@ -60,7 +60,7 @@ export const actions = {
   },
   postProcessAnswer({ rootState, commit }, answerData) {
     let questionData = JSON.parse(JSON.stringify((rootState.course.questions[answerData.questionId])));
-    console.log(questionData);
+    // console.log(questionData);
     questionData["answer"] = answerData.answer;
     questionData["facultyId"] = answerData.facultyId;
     commit("course/SET_QUESTION", questionData, { root: true });

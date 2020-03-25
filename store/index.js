@@ -5,7 +5,7 @@ import createPersistedState from "vuex-persistedstate";
 
 export const actions = {
   nuxtServerInit({ commit }) {
-    console.log("server initialized");
+    // console.log("server initialized");
   }
 };
 
