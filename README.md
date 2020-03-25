@@ -1,6 +1,6 @@
-# project
+# Course Review Portal
 
-> My tiptop Nuxt.js project
+> My software Nuxt.js project
 
 ## Build Setup
 
@@ -20,3 +20,22 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org)
+
+## Built With
+
+* [Vue JS](https://vuejs.org/) - The Progressive JavaScript Framework
+* [Bulma](https://bulma.io/) - CSS framework
+* [FireBase](https://firebase.google.com/?gclid=CjwKCAjw3-bzBRBhEiwAgnnLCg5mQFAucOwekECsm5YDHAcvko_evQj9XPuyq-ZbxXboYTCl0o1RQRoCJ2AQAvD_BwE) - Dependency Management
+* [Jest](https://jestjs.io/) - JavaScript Testing Framework
+* [SonarQube](https://www.sonarqube.org/) - Code Quality and Security
+* [Selinium](https://www.selenium.dev/) - Automates browsers
+
+## Authors
+
+* **T P V Krishna Teja**
+* **Dhanush G A**
+* **Divya Rathi**
+* **Harini G**
+
+
+See also the list of [contributors](https://github.com/Teja-09/software-project/graphs/contributors) who participated in this project.
