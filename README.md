@@ -32,11 +32,15 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 *   [SonarQube](https://www.sonarqube.org/) - Code Quality and Security
 *   [Selinium](https://www.selenium.dev/) - Automates browsers
 
-## Authors
+## Contributors ✨
 
-*   **T P V Krishna Teja**
-*   **Dhanush G A**
-*   **Divya Rathi**
-*   **Harini G**
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Teja-09"><img src="https://user-images.githubusercontent.com/45790208/77507098-a2dc1d80-6e8d-11ea-9f50-3b391b3c91a5.jpg" width="100px;" alt=""/><br /><sub><b>T P V Krishna Teja</b></sub></a><br /><a href="https://github.com/Teja-09/software-project/blob/master/README.md" title="Documentation">📖</a><a href="https://github.com/Teja-09/software-project/commits?author=Teja-09" title="maintenance">🚧</a><a href="https://github.com/Teja-09/software-project/commits?author=Teja-09" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/gadsater"><img src="https://user-images.githubusercontent.com/45790208/77505733-f9475d00-6e89-11ea-8199-1389f75ab1ed.jpg" width="100px;" alt=""/><br /><sub><b>Dhanush G A</b></sub></a><br /><a href="https://github.com/Teja-09/software-project/tree/master/crp-db-manager" title="Data">🔣</a><a href="https://github.com/Teja-09/software-project/commits?author=gadsater" title="Code">💻</a></td>
+  </tr>
+</table>
 
 See also the list of [contributors](https://github.com/Teja-09/software-project/graphs/contributors) who participated in this project.
