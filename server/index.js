@@ -1,10 +1,10 @@
-const express = require('express')
-const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
+const express = require('express');
+const consola = require('consola');
+const { Nuxt, Builder } = require('nuxt');
 const app = express()
 
 // Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
+const config = require('../nuxt.config.js');
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
@@ -16,9 +16,9 @@ async function start () {
   // Build only in dev mode
   if (config.dev) {
     const builder = new Builder(nuxt)
-    await builder.build()
+    await builder.build();
   } else {
-    await nuxt.ready()
+    await nuxt.ready();
   }
 
   // Give nuxt middleware to  express
@@ -29,6 +29,6 @@ async function start () {
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true
-  })
+  });
 }
 start()

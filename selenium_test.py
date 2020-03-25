@@ -1,13 +1,8 @@
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-# from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
-from bs4 import BeautifulSoup
 import unittest
-import time
 import os
 
 
@@ -46,48 +41,8 @@ class TestSelenium(unittest.TestCase):
 
         groups = self.driver.find_elements_by_xpath(xpath_group)
 
-        # after click on the group, if there are two title of this group on
-        # the screen it means that there are information about them on the
-        # sidebar and as the title in the header of the group clicked
         self.assertEqual(2, len(groups))
 
-    # #def test_click_on_group_and_send_text(self):
-    # #     xpath_group = f'//*[@title="{self.default_group}"]'
-    # #     self.wait_for_element(xpath_group)
-
-    # #     group = self.driver.find_element_by_xpath(xpath_group)
-    # #     group.click()
-
-    # #     groups = self.driver.find_elements_by_xpath(xpath_group)
-
-    # #     # after click on the group, if there are two title of this group on
-    # #     # the screen it means that there are information about them on the
-    # #     # sidebar and as the title in the header of the group clicked
-    # #     self.assertEqual(2, len(groups))
-
-    # #     # finds the form input
-    # #     xpath_input_group = "//div[@contenteditable='true']"
-    # #     input_group = self.driver.find_element_by_xpath(xpath_input_group)
-    # #     text = 'Olá, resocie!'
-    # #     input_group.send_keys(text)
-    # #     xpath_send_group = "//span[@data-icon='send']"
-    # #     send_group = self.driver.find_element_by_xpath(xpath_send_group)
-    # #     send_group.click()
-
-    # #     time.sleep(2)
-    # #     html = self.driver.page_source
-    # #     soup = BeautifulSoup(html, "html.parser")
-    # #     time.sleep(1)
-    # #     texts = soup.findAll("span",
-    # #                 {"class": "selectable-text invisible-space copyable-text"})
-
-    # #     # checks if the last message received in the group was the message sent
-    # #     self.assertEqual(text, texts[-1].text)
-
-    # # def tearDown(self):
-    # #     # wait a little and close the fake web
-    # #     time.sleep(2)
-    # #     self.driver.quit()
 if __name__ == '__main__':
     print("hi")
     unittest.main()

@@ -101,7 +101,7 @@ export const actions = {
             .collection("questions")
             .doc(questionId)
             .get()
-            .then(doc => {
+            .then((doc) => {
               commit("SET_QUESTION", { questionId, questionData: doc.data() });
               console.log({ questionId, questionData: doc.data() });
             });
@@ -123,7 +123,7 @@ export const actions = {
           let courseNameList = [];
           let courseIconList = [];
 
-          querySnapshot.forEach(doc => {
+          querySnapshot.forEach((doc) => {
             courseCodeList.push(doc.id);
             courseNameList.push(doc.data().courseName);
             courseIconList.push(jdenticon.toSvg(doc.data().courseName, 200));

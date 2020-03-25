@@ -21,7 +21,7 @@ export const mutations = {
 
 export const getters = {
   isUserLoggedIn(state) {
-    return state.uid != null;
+    return state.uid !== null;
   },
   getUserDetails(state) {
     return state.userDetails;

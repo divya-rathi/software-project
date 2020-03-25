@@ -1,10 +1,7 @@
 import unittest2
-import os
 from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
@@ -15,7 +12,7 @@ class test(unittest2.TestCase):
         options.add_argument('-headless')
         driver_path = '/bin/geckodriver'
         binary_path = '/bin/firefox/firefox'
-        binary = FirefoxBinary(binary_path)
+
         self.driver = webdriver.Firefox(executable_path=driver_path,options=options)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
@@ -114,20 +111,3 @@ class test(unittest2.TestCase):
 home = "https://pro-deploy-123.netlify.com/"
 if(__name__=="__main__"):
     unittest2.main()
-
-
-'''
-    def test_centerCheck(self):
-        self.body_loc = self.driver.find_element_by_tag_name('canvas').location
-        self.body_end = self.driver.find_element_by_tag_name('canvas').size
-        body_center = (self.body_end['height']/2, self.body_end['width']/2)
-        self.card_loc = self.driver.find_element_by_class_name('card').location
-        self.card_end = self.driver.find_element_by_class_name('card').size
-        print(body_center)
-        print(self.card_loc)
-        print(self.card_end)
-        print((self.card_end['height']+self.card_loc['y']))
-        print((self.card_end['width']+self.card_loc['x']))
-        self.body_end = self.driver.find_element_by_class_name('card').value_of_css_property('transform')
-        print(np.array(self.body_end))
-    '''

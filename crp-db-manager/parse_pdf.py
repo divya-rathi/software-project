@@ -80,7 +80,6 @@ for key, val in reqText.items():
                 if not buffer_key_text: buffer_key_text = 'Unit'
                 outText[key]['courseDescription']['units'][buffer_key_text] = ' '.join(
                             buffer)
-                
                 buffer.clear()
                 buffer_key.clear()
                 buffer_key.append(val[i])
@@ -129,10 +128,8 @@ for key, val in reqText.items():
         while '' in referenceList: referenceList.remove('')
         while ' ' in referenceList: referenceList.remove(' ')
         outText[key]['courseDescription']['references'] = referenceList
-
     elif len(buffer):
         outText[key]['courseDescription']['units']['Unit'] = ' '.join(buffer) 
     buffer.clear()
-
 with open('course_parse_data.json', 'w+') as course_data:
     course_data.write(json.dumps(outText))
