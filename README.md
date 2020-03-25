@@ -1,5 +1,7 @@
 # Course Review Portal
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a984ef73321740d185aa8356b9f09ff7)](https://app.codacy.com/manual/Teja-09/software-project?utm_source=github.com&utm_medium=referral&utm_content=Teja-09/software-project&utm_campaign=Badge_Grade_Dashboard)
+
 > My software Nuxt.js project
 
 ## Build Setup
