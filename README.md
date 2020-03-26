@@ -30,7 +30,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 *   [FireBase](https://firebase.google.com/?gclid=CjwKCAjw3-bzBRBhEiwAgnnLCg5mQFAucOwekECsm5YDHAcvko_evQj9XPuyq-ZbxXboYTCl0o1RQRoCJ2AQAvD_BwE) - Dependency Management
 *   [Jest](https://jestjs.io/) - JavaScript Testing Framework
 *   [SonarQube](https://www.sonarqube.org/) - Code Quality and Security
-*   [Selinium](https://www.selenium.dev/) - Automates browsers
+*   [Selinium](https://www.selenium.dev/) - Automates Browsers
 
 ## Contributors ✨
 
