@@ -16,7 +16,7 @@ class test(unittest2.TestCase):
         self.driver = webdriver.Firefox(executable_path=driver_path,options=options)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
-        self.driver.get("https://pro-deploy-123.netlify.com/login")
+        self.driver.get("https://course-review.netlify.com/login")
 
         self.driver1 = webdriver.Firefox(executable_path=driver_path,options=options)
         self.driver1.implicitly_wait(30)
@@ -108,6 +108,6 @@ class test(unittest2.TestCase):
         self.driver.quit()
         self.driver1.quit()
 
-home = "https://pro-deploy-123.netlify.com/"
+home = "https://course-review.netlify.com/"
 if(__name__=="__main__"):
     unittest2.main()
