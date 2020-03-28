@@ -19,6 +19,6 @@ module.exports = {
     "<rootDir>/components/**/*.vue",
     "<rootDir>/pages/*.vue"
   ],
-  transformIgnorePatterns: ["<rootDir>/node_modules/(?!lodash-es/.*)"]
+  transformIgnorePatterns: ['"<rootDir>/node_modules/(?!lodash-es/.*)"']
 
 };
